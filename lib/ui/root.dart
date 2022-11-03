@@ -60,7 +60,7 @@ class _RootScreanState extends State<RootScrean> {
                   Center(
                     child: Column(
                       mainAxisAlignment: MainAxisAlignment.center,
-                      children: [],
+                      children: const [],
                     ),
                   ))
             ],
@@ -68,12 +68,12 @@ class _RootScreanState extends State<RootScrean> {
           bottomNavigationBar: BottomNavigationBar(
             items: const [
               BottomNavigationBarItem(
-                  icon: Icon(CupertinoIcons.home), label: "خانه"),
+                  icon: Icon(CupertinoIcons.home), label: "Home"),
               BottomNavigationBarItem(
-                  icon: Icon(CupertinoIcons.search), label: "سبد خرید"),
+                  icon: Icon(CupertinoIcons.search), label: "Search"),
               BottomNavigationBarItem(
                   icon: Icon(CupertinoIcons.square_favorites),
-                  label: "پروفایل"),
+                  label: "Watch list"),
             ],
             currentIndex: selectedScreenIndex,
             onTap: (selectIndex) {
