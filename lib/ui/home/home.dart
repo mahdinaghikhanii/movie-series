@@ -19,7 +19,7 @@ class HomeScreen extends StatelessWidget {
                       const SizedBox(height: 20),
                       Padding(
                         padding: const EdgeInsets.symmetric(
-                            horizontal: Dimensions.PADDING_DEFUALT_SIZE),
+                            horizontal: Dimensions.padingdefultSize),
                         child: Text(
                           "What do you want to watch ?",
                           style: Theme.of(context).textTheme.titleMedium,
