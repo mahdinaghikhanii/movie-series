@@ -1,4 +1,4 @@
-class AppeEception {
+class AppeExeption {
   final String exception;
-  AppeEception({this.exception = "we have problems"});
+  AppeExeption({this.exception = "we have problems"});
 }
