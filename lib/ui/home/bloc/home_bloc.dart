@@ -12,8 +12,6 @@ class HomeBloc extends Bloc<HomeEvent, HomeState> {
     on<HomeEvent>((event, emit) async {
       if (event is HomeStarted) {
         emit(HomeLoading());
-        await Future.delayed(const Duration(seconds: 2));
-        // emit(HomeSucces());
       }
     });
   }

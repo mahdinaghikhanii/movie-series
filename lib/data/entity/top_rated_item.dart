@@ -13,6 +13,21 @@ class TopRatedItemEntity {
   final double voteAverage;
   final int voteCount;
 
+  TopRatedItemEntity(
+      this.adult,
+      this.backdropPath,
+      this.id,
+      this.originalLanguage,
+      this.originalTitle,
+      this.overview,
+      this.popularity,
+      this.posterPath,
+      this.releaseDate,
+      this.title,
+      this.video,
+      this.voteAverage,
+      this.voteCount);
+
   TopRatedItemEntity.fromJson(Map<String, dynamic> json)
       : adult = json['adult'],
         backdropPath = json['backdrop_path'],
@@ -31,9 +46,9 @@ class TopRatedItemEntity {
   static List<TopRatedItemEntity> parssJsonArray(List<dynamic> jsonArray) {
     final List<TopRatedItemEntity> item = [];
 
-    (jsonArray as List).forEach((json) {
+    for (var json in jsonArray) {
       item.add(TopRatedItemEntity.fromJson(json));
-    });
+    }
 
     return item;
   }
