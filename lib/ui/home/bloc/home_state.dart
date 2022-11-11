@@ -10,7 +10,7 @@ abstract class HomeState extends Equatable {
 class HomeInitial extends HomeState {}
 
 class HomeSucces extends HomeState {
-  final List<TopRatedEntity> topRated;
+  final List<TopRatedItemEntity> topRated;
   const HomeSucces(this.topRated);
 
   @override

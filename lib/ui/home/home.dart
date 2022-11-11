@@ -1,6 +1,7 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:movie_series/data/repo/top_rated_repository.dart';
 import 'package:movie_series/ui/home/bloc/home_bloc.dart';
 
 import '../../common/dimensions.dart';
@@ -13,7 +14,7 @@ class HomeScreen extends StatelessWidget {
     return Scaffold(
         body: BlocProvider(
       create: (BuildContext context) {
-        final bloc = HomeBloc();
+        final bloc = HomeBloc(topRatedRepository);
         bloc.add(HomeStarted());
         return bloc;
       },
@@ -41,16 +42,32 @@ class HomeScreen extends StatelessWidget {
                       );
 
                     case 1:
-                      return ListView.builder(itemBuilder: (context, index) {
-                        return Container();
-                      });
+                      return SizedBox(
+                        width: MediaQuery.of(context).size.width,
+                        height: MediaQuery.of(context).size.height * 0.30,
+                        child: ListView.builder(
+                            scrollDirection: Axis.horizontal,
+                            itemCount: state.topRated.length,
+                            itemBuilder: (context, index) {
+                              final toprated = state.topRated;
+                              debugPrint(toprated[index].video.toString());
+                              return Text(
+                                toprated[index].title,
+                                style: Theme.of(context).textTheme.subtitle1,
+                              );
+                            }),
+                      );
 
                     default:
                       return Container();
                   }
                 });
           } else if (state is HomeFailed) {
-            return Center(child: Text(state.appeExeption.toString()));
+            return Center(
+                child: Text(
+              state.appeExeption.toString(),
+              style: Theme.of(context).textTheme.displayLarge,
+            ));
           } else if (state is HomeLoading) {
             return const Center(
               child: CupertinoActivityIndicator(
