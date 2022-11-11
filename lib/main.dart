@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 
-import 'package:movie_series/theme.dart';
-import 'package:movie_series/ui/root.dart';
+import 'theme.dart';
+import 'ui/root.dart';
 
 void main() {
   WidgetsFlutterBinding.ensureInitialized();

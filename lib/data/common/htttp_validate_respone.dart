@@ -1,5 +1,5 @@
 import 'package:dio/dio.dart';
-import 'package:movie_series/common/exception.dart';
+import '../../common/exception.dart';
 
 mixin HttpValidateRespone {
   validateRespone(Response respone) {

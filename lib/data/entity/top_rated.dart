@@ -1,4 +1,4 @@
-import 'package:movie_series/data/entity/top_rated_item.dart';
+import 'top_rated_item.dart';
 
 class TopRatedEntity {
   final int page;

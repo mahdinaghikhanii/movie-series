@@ -1,6 +1,6 @@
-import 'package:movie_series/common/http_client.dart';
-import 'package:movie_series/data/entity/top_rated_item.dart';
-import 'package:movie_series/data/source/top_rated_data_source.dart';
+import '../../common/http_client.dart';
+import '../entity/top_rated_item.dart';
+import '../source/top_rated_data_source.dart';
 
 final topRatedRepository =
     TopRatedRepository(RemoteTopRatedDataSource(httpClint));

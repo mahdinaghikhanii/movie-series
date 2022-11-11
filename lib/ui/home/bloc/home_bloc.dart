@@ -1,10 +1,10 @@
 import 'package:equatable/equatable.dart';
 
 import 'package:flutter_bloc/flutter_bloc.dart';
-import 'package:movie_series/common/exception.dart';
+import '../../../common/exception.dart';
 
-import 'package:movie_series/data/entity/top_rated_item.dart';
-import 'package:movie_series/data/repo/top_rated_repository.dart';
+import '../../../data/entity/top_rated_item.dart';
+import '../../../data/repo/top_rated_repository.dart';
 
 part 'home_event.dart';
 part 'home_state.dart';

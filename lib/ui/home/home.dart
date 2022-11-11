@@ -1,10 +1,12 @@
+import 'package:cached_network_image/cached_network_image.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
-import 'package:movie_series/data/repo/top_rated_repository.dart';
-import 'package:movie_series/ui/home/bloc/home_bloc.dart';
+import 'package:movie_series/common/app_constans.dart';
 
 import '../../common/dimensions.dart';
+import '../../data/repo/top_rated_repository.dart';
+import 'bloc/home_bloc.dart';
 
 class HomeScreen extends StatelessWidget {
   const HomeScreen({super.key});
@@ -37,7 +39,8 @@ class HomeScreen extends StatelessWidget {
                               "What do you want to watch ?",
                               style: Theme.of(context).textTheme.titleMedium,
                             ),
-                          )
+                          ),
+                          const SizedBox(height: 20),
                         ],
                       );
 
@@ -46,15 +49,14 @@ class HomeScreen extends StatelessWidget {
                         width: MediaQuery.of(context).size.width,
                         height: MediaQuery.of(context).size.height * 0.30,
                         child: ListView.builder(
+                            padding: const EdgeInsets.only(
+                                left: Dimensions.padingdefultSize),
                             scrollDirection: Axis.horizontal,
                             itemCount: state.topRated.length,
                             itemBuilder: (context, index) {
-                              final toprated = state.topRated;
-                              debugPrint(toprated[index].video.toString());
-                              return Text(
-                                toprated[index].title,
-                                style: Theme.of(context).textTheme.subtitle1,
-                              );
+                              return CachedNetworkImage(
+                                  imageUrl:
+                                      "${AppConstans.getPoster}${state.topRated[index].posterPath}");
                             }),
                       );
 

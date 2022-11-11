@@ -1,8 +1,8 @@
 import 'package:dio/dio.dart';
 
-import 'package:movie_series/data/common/htttp_validate_respone.dart';
+import '../common/htttp_validate_respone.dart';
 
-import 'package:movie_series/data/entity/top_rated_item.dart';
+import '../entity/top_rated_item.dart';
 
 abstract class IRemoteTopRatedDataSource {
   Future<List<TopRatedItemEntity>> getTopRated();
