@@ -3,6 +3,7 @@ import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:movie_series/common/app_constans.dart';
+import 'package:movie_series/ui/widgets/image.dart';
 
 import '../../common/dimensions.dart';
 import '../../data/repo/top_rated_repository.dart';
@@ -54,9 +55,11 @@ class HomeScreen extends StatelessWidget {
                             scrollDirection: Axis.horizontal,
                             itemCount: state.topRated.length,
                             itemBuilder: (context, index) {
-                              return CachedNetworkImage(
-                                  imageUrl:
-                                      "${AppConstans.getPoster}${state.topRated[index].posterPath}");
+                              return Padding(
+                                  padding: const EdgeInsets.only(right: 30),
+                                  child: ImageLoadingService(
+                                      imgPath:
+                                          "${AppConstans.getPoster}${state.topRated[index].posterPath}"));
                             }),
                       );
 
