@@ -1,8 +1,7 @@
 import 'package:equatable/equatable.dart';
-
 import 'package:flutter_bloc/flutter_bloc.dart';
-import '../../../common/exception.dart';
 
+import '../../../common/exception.dart';
 import '../../../data/entity/top_rated_item.dart';
 import '../../../data/repo/top_rated_repository.dart';
 

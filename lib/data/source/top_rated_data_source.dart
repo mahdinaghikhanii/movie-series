@@ -1,7 +1,6 @@
 import 'package:dio/dio.dart';
 
 import '../common/htttp_validate_respone.dart';
-
 import '../entity/top_rated_item.dart';
 
 abstract class IRemoteTopRatedDataSource {

@@ -1,12 +1,12 @@
-import 'package:cached_network_image/cached_network_image.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
-import 'package:movie_series/common/app_constans.dart';
-import 'package:movie_series/ui/widgets/image.dart';
 
+import '../../common/app_constans.dart';
 import '../../common/dimensions.dart';
 import '../../data/repo/top_rated_repository.dart';
+import '../widgets/image.dart';
+import '../widgets/title_text.dart';
 import 'bloc/home_bloc.dart';
 
 class HomeScreen extends StatelessWidget {
@@ -60,6 +60,22 @@ class HomeScreen extends StatelessWidget {
                                   child: ImageLoadingService(
                                       imgPath:
                                           "${AppConstans.getPoster}${state.topRated[index].posterPath}"));
+                            }),
+                      );
+
+                    case 2:
+                      return SizedBox(
+                        height: 120,
+                        width: double.infinity,
+                        child: ListView.builder(
+                            scrollDirection: Axis.horizontal,
+                            padding: const EdgeInsets.only(
+                                top: 40, left: Dimensions.padingdefultSize),
+                            itemCount: 4,
+                            itemBuilder: (context, index) {
+                              return const Padding(
+                                  padding: EdgeInsets.only(right: 12),
+                                  child: TitleText(titleText: "Now playing"));
                             }),
                       );
 

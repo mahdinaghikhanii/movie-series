@@ -13,7 +13,9 @@ class ImageLoadingService extends StatelessWidget {
       child: CachedNetworkImage(
           imageUrl: imgPath,
           progressIndicatorBuilder: (context, url, progress) =>
-              CupertinoActivityIndicator()),
+              const CupertinoActivityIndicator(
+                color: Colors.white,
+              )),
     );
   }
 }

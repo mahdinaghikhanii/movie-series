@@ -18,6 +18,10 @@ class MyApp extends StatelessWidget {
         debugShowCheckedModeBanner: false,
         theme: ThemeData(
             textTheme: const TextTheme(
+                titleSmall: TextStyle(
+                    color: Colors.white,
+                    fontWeight: FontWeight.bold,
+                    fontSize: 15),
                 titleMedium: TextStyle(
                     color: LightThemeColor.primaryTextColor,
                     fontWeight: FontWeight.bold,
