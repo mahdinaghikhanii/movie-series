@@ -9,11 +9,17 @@ import '../widgets/image.dart';
 import '../widgets/title_text.dart';
 import 'bloc/home_bloc.dart';
 
-class HomeScreen extends StatelessWidget {
+class HomeScreen extends StatefulWidget {
   const HomeScreen({super.key});
 
   @override
+  State<HomeScreen> createState() => _HomeScreenState();
+}
+
+class _HomeScreenState extends State<HomeScreen> with TickerProviderStateMixin {
+  @override
   Widget build(BuildContext context) {
+    TabController _tabController = TabController(length: 4, vsync: this);
     return Scaffold(
         body: BlocProvider(
       create: (BuildContext context) {
@@ -64,20 +70,31 @@ class HomeScreen extends StatelessWidget {
                       );
 
                     case 2:
-                      return SizedBox(
-                        height: 120,
-                        width: double.infinity,
-                        child: ListView.builder(
-                            scrollDirection: Axis.horizontal,
+                      return Container(
+                          margin: const EdgeInsets.only(top: 26),
+                          height: 60,
+                          width: double.infinity,
+                          child: TabBar(
                             padding: const EdgeInsets.only(
-                                top: 40, left: Dimensions.padingdefultSize),
-                            itemCount: 4,
-                            itemBuilder: (context, index) {
-                              return const Padding(
-                                  padding: EdgeInsets.only(right: 12),
-                                  child: TitleText(titleText: "Now playing"));
-                            }),
-                      );
+                                top: 0, left: Dimensions.padingdefultSize),
+                            isScrollable: true,
+                            unselectedLabelColor: Colors.grey,
+                            indicatorPadding:
+                                const EdgeInsets.symmetric(horizontal: 0),
+                            indicatorColor: const Color(0xFF3A3F47),
+                            indicatorSize: TabBarIndicatorSize.tab,
+                            indicatorWeight: 5,
+                            labelPadding: const EdgeInsets.only(
+                                left: Dimensions.padingdefultSize,
+                                right: Dimensions.padingdefultSize),
+                            controller: _tabController,
+                            tabs: const [
+                              Tab(text: "Now playing"),
+                              Tab(text: "Upcoming"),
+                              Tab(text: "Top rated"),
+                              Tab(text: "Popular"),
+                            ],
+                          ));
 
                     default:
                       return Container();
