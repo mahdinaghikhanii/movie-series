@@ -6,7 +6,7 @@ import '../../common/app_constans.dart';
 import '../../common/dimensions.dart';
 import '../../data/repo/top_rated_repository.dart';
 import '../widgets/image.dart';
-import '../widgets/title_text.dart';
+
 import 'bloc/home_bloc.dart';
 
 class HomeScreen extends StatefulWidget {
@@ -19,7 +19,7 @@ class HomeScreen extends StatefulWidget {
 class _HomeScreenState extends State<HomeScreen> with TickerProviderStateMixin {
   @override
   Widget build(BuildContext context) {
-    TabController _tabController = TabController(length: 4, vsync: this);
+    TabController tabController = TabController(length: 4, vsync: this);
     return Scaffold(
         body: BlocProvider(
       create: (BuildContext context) {
@@ -47,7 +47,7 @@ class _HomeScreenState extends State<HomeScreen> with TickerProviderStateMixin {
                               style: Theme.of(context).textTheme.titleMedium,
                             ),
                           ),
-                          const SizedBox(height: 20),
+                          const SizedBox(height: 30),
                         ],
                       );
 
@@ -87,7 +87,8 @@ class _HomeScreenState extends State<HomeScreen> with TickerProviderStateMixin {
                             labelPadding: const EdgeInsets.only(
                                 left: Dimensions.padingdefultSize,
                                 right: Dimensions.padingdefultSize),
-                            controller: _tabController,
+                            controller: tabController,
+                            onTap: (val) {},
                             tabs: const [
                               Tab(text: "Now playing"),
                               Tab(text: "Upcoming"),
@@ -95,6 +96,30 @@ class _HomeScreenState extends State<HomeScreen> with TickerProviderStateMixin {
                               Tab(text: "Popular"),
                             ],
                           ));
+
+                    case 3:
+                      return SizedBox(
+                        width: MediaQuery.of(context).size.width,
+                        height: MediaQuery.of(context).size.height,
+                        child: TabBarView(controller: tabController, children: [
+                          Text(
+                            "ssss",
+                            style: Theme.of(context).textTheme.bodyMedium,
+                          ),
+                          Text(
+                            "checj",
+                            style: Theme.of(context).textTheme.bodyMedium,
+                          ),
+                          Text(
+                            "sssdsadasdajs",
+                            style: Theme.of(context).textTheme.bodyMedium,
+                          ),
+                          Text(
+                            "sdiasjdsadjasidsa",
+                            style: Theme.of(context).textTheme.bodyMedium,
+                          )
+                        ]),
+                      );
 
                     default:
                       return Container();

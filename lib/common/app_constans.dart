@@ -6,4 +6,5 @@ class AppConstans {
   static const topRatedMovie = "top_rated";
   static const topseries = "";
   static const getPoster = "https://image.tmdb.org/t/p/w500";
+  static const nowPlaying = 'now_playing';
 }
