@@ -11,10 +11,15 @@ class HomeInitial extends HomeState {}
 
 class HomeSucces extends HomeState {
   final List<TopRatedItemEntity> topRated;
-  const HomeSucces(this.topRated);
+
+  const HomeSucces(
+    this.topRated,
+  );
 
   @override
-  List<Object> get props => [topRated];
+  List<Object> get props => [
+        topRated,
+      ];
 }
 
 class HomeFailed extends HomeState {

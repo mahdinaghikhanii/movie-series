@@ -1,4 +1,6 @@
 import 'package:dio/dio.dart';
+import 'package:flutter/material.dart';
+import 'package:movie_series/common/app_constans.dart';
 
 import '../common/htttp_validate_respone.dart';
 import '../entity/top_rated_item.dart';
@@ -14,8 +16,9 @@ class RemoteTopRatedDataSource
   RemoteTopRatedDataSource(this.httpClient);
   @override
   Future<List<TopRatedItemEntity>> getTopRated() async {
-    final respone = await httpClient
-        .get("movie/top_rated?api_key=caeeae4ccb1c5ddacd05161e7217a2e6");
+    final respone = await httpClient.get(AppConstans.baseUrlForMovie +
+        AppConstans.topRatedMovie +
+        AppConstans.apiKey);
 
     validateRespone(respone);
     List<TopRatedItemEntity> entity = [];

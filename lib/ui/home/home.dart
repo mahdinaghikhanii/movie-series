@@ -1,6 +1,7 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:movie_series/data/repo/now_playing_repository.dart';
 
 import '../../common/app_constans.dart';
 import '../../common/dimensions.dart';
@@ -128,8 +129,8 @@ class _HomeScreenState extends State<HomeScreen> with TickerProviderStateMixin {
           } else if (state is HomeFailed) {
             return Center(
                 child: Text(
-              state.appeExeption.toString(),
-              style: Theme.of(context).textTheme.displayLarge,
+              state.appeExeption.exception.toString(),
+              style: Theme.of(context).textTheme.subtitle1,
             ));
           } else if (state is HomeLoading) {
             return const Center(

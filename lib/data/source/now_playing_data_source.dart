@@ -1,4 +1,5 @@
 import 'package:dio/dio.dart';
+import 'package:flutter/material.dart';
 import 'package:movie_series/common/app_constans.dart';
 import 'package:movie_series/data/entity/top_rated_item.dart';
 
@@ -15,16 +16,18 @@ class NowPlayingDataSource
   NowPlayingDataSource(this.httpClient);
   @override
   Future<List<TopRatedItemEntity>> getNowPlaying() async {
-    final respone = await httpClient.get(AppConstans.nowPlaying);
+    final respone = await httpClient.get(AppConstans.baseUrlForMovie +
+        AppConstans.nowPlaying +
+        AppConstans.apiKey);
 
     validateRespone(respone);
 
-    List<TopRatedItemEntity> entity = [];
+    List<TopRatedItemEntity> nowPlayingentity = [];
 
     for (var json in (respone.data['results'] as List)) {
-      entity.add(TopRatedItemEntity.fromJson(json));
+      nowPlayingentity.add(TopRatedItemEntity.fromJson(json));
     }
-
-    return entity;
+    debugPrint(nowPlayingentity.toString());
+    return nowPlayingentity;
   }
 }
