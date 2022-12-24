@@ -1,12 +1,11 @@
 import 'package:dio/dio.dart';
-import 'package:flutter/material.dart';
+import 'package:movie_series/data/entity/now_playing_item.dart';
 import '../../common/app_constans.dart';
-import '../entity/resultItem.dart';
 
 import '../common/htttp_validate_respone.dart';
 
 abstract class INowPlayingDataSource {
-  Future<List<ResultItemEntity>> getNowPlaying();
+  Future<NowPlayingItemEntity> getNowPlaying();
 }
 
 class NowPlayingDataSource
@@ -15,19 +14,11 @@ class NowPlayingDataSource
   final Dio httpClient;
   NowPlayingDataSource(this.httpClient);
   @override
-  Future<List<ResultItemEntity>> getNowPlaying() async {
+  Future<NowPlayingItemEntity> getNowPlaying() async {
     final respone = await httpClient.get(AppConstans.baseUrlForMovie +
         AppConstans.nowPlaying +
         AppConstans.apiKey);
-
     validateRespone(respone);
-
-    List<ResultItemEntity> nowPlayingentity = [];
-
-    for (var json in (respone.data['results'] as List)) {
-      nowPlayingentity.add(ResultItemEntity.fromJson(json));
-    }
-    debugPrint(nowPlayingentity.toString());
-    return nowPlayingentity;
+    return NowPlayingItemEntity.fromJson(respone.data);
   }
 }

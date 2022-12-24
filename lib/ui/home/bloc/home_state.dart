@@ -11,7 +11,7 @@ class HomeInitial extends HomeState {}
 
 class HomeSucces extends HomeState {
   final List<ResultItemEntity> topRated;
-  final List<ResultItemEntity> nowPlaying;
+  final NowPlayingItemEntity nowPlaying;
   const HomeSucces(this.topRated, this.nowPlaying);
 
   @override

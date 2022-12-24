@@ -1,5 +1,7 @@
 import 'package:equatable/equatable.dart';
+import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:movie_series/data/entity/now_playing_item.dart';
 import 'package:movie_series/data/repo/now_playing_repository.dart';
 
 import '../../../common/exception.dart';
@@ -22,6 +24,7 @@ class HomeBloc extends Bloc<HomeEvent, HomeState> {
           final nowPlaying = await nowPlayingRepository.getNowPlaying();
           emit(HomeSucces(topRated, nowPlaying));
         } catch (e) {
+          debugPrint(e.toString());
           emit(HomeFailed(AppeExeption()));
         }
       }

@@ -1,19 +1,19 @@
 import '../../common/http_client.dart';
-import '../entity/resultItem.dart';
+import '../entity/now_playing_item.dart';
 import '../source/now_playing_data_source.dart';
 
 final nowPlayingRepository =
     NowPlayingRepository(NowPlayingDataSource(httpClint));
 
 abstract class INowPlayingRepository {
-  Future<List<ResultItemEntity>> getNowPlaying();
+  Future<NowPlayingItemEntity> getNowPlaying();
 }
 
 class NowPlayingRepository implements INowPlayingRepository {
   INowPlayingDataSource nowPlayingDataSource;
   NowPlayingRepository(this.nowPlayingDataSource);
   @override
-  Future<List<ResultItemEntity>> getNowPlaying() {
+  Future<NowPlayingItemEntity> getNowPlaying() {
     return nowPlayingDataSource.getNowPlaying();
   }
 }
