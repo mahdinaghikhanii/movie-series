@@ -1,12 +1,12 @@
 import 'package:dio/dio.dart';
 import 'package:flutter/material.dart';
-import 'package:movie_series/common/app_constans.dart';
-import 'package:movie_series/data/entity/top_rated_item.dart';
+import '../../common/app_constans.dart';
+import '../entity/resultItem.dart';
 
 import '../common/htttp_validate_respone.dart';
 
 abstract class INowPlayingDataSource {
-  Future<List<TopRatedItemEntity>> getNowPlaying();
+  Future<List<ResultItemEntity>> getNowPlaying();
 }
 
 class NowPlayingDataSource
@@ -15,17 +15,17 @@ class NowPlayingDataSource
   final Dio httpClient;
   NowPlayingDataSource(this.httpClient);
   @override
-  Future<List<TopRatedItemEntity>> getNowPlaying() async {
+  Future<List<ResultItemEntity>> getNowPlaying() async {
     final respone = await httpClient.get(AppConstans.baseUrlForMovie +
         AppConstans.nowPlaying +
         AppConstans.apiKey);
 
     validateRespone(respone);
 
-    List<TopRatedItemEntity> nowPlayingentity = [];
+    List<ResultItemEntity> nowPlayingentity = [];
 
     for (var json in (respone.data['results'] as List)) {
-      nowPlayingentity.add(TopRatedItemEntity.fromJson(json));
+      nowPlayingentity.add(ResultItemEntity.fromJson(json));
     }
     debugPrint(nowPlayingentity.toString());
     return nowPlayingentity;

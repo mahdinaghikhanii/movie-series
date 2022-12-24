@@ -1,4 +1,4 @@
-class TopRatedItemEntity {
+class ResultItemEntity {
   final bool adult;
   final String backdropPath;
   final int id;
@@ -13,7 +13,7 @@ class TopRatedItemEntity {
   final double voteAverage;
   final int voteCount;
 
-  TopRatedItemEntity(
+  ResultItemEntity(
       this.adult,
       this.backdropPath,
       this.id,
@@ -28,7 +28,7 @@ class TopRatedItemEntity {
       this.voteAverage,
       this.voteCount);
 
-  TopRatedItemEntity.fromJson(Map<String, dynamic> json)
+  ResultItemEntity.fromJson(Map<String, dynamic> json)
       : adult = json['adult'],
         backdropPath = json['backdrop_path'],
         id = json['id'],
@@ -43,11 +43,11 @@ class TopRatedItemEntity {
         voteAverage = json['vote_average'],
         voteCount = json['vote_count'];
 
-  static List<TopRatedItemEntity> parssJsonArray(List<dynamic> jsonArray) {
-    final List<TopRatedItemEntity> item = [];
+  static List<ResultItemEntity> parssJsonArray(List<dynamic> jsonArray) {
+    final List<ResultItemEntity> item = [];
 
     for (var json in jsonArray) {
-      item.add(TopRatedItemEntity.fromJson(json));
+      item.add(ResultItemEntity.fromJson(json));
     }
 
     return item;

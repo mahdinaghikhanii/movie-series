@@ -1,11 +1,11 @@
 import 'package:dio/dio.dart';
-import 'package:movie_series/common/app_constans.dart';
+import '../../common/app_constans.dart';
 
 import '../common/htttp_validate_respone.dart';
-import '../entity/top_rated_item.dart';
+import '../entity/resultItem.dart';
 
 abstract class IRemoteTopRatedDataSource {
-  Future<List<TopRatedItemEntity>> getTopRated();
+  Future<List<ResultItemEntity>> getTopRated();
 }
 
 class RemoteTopRatedDataSource
@@ -14,16 +14,16 @@ class RemoteTopRatedDataSource
   final Dio httpClient;
   RemoteTopRatedDataSource(this.httpClient);
   @override
-  Future<List<TopRatedItemEntity>> getTopRated() async {
+  Future<List<ResultItemEntity>> getTopRated() async {
     final respone = await httpClient.get(AppConstans.baseUrlForMovie +
         AppConstans.topRatedMovie +
         AppConstans.apiKey);
 
     validateRespone(respone);
-    List<TopRatedItemEntity> entity = [];
+    List<ResultItemEntity> entity = [];
 
     for (var json in (respone.data['results'] as List)) {
-      entity.add(TopRatedItemEntity.fromJson(json));
+      entity.add(ResultItemEntity.fromJson(json));
     }
 
     return entity;

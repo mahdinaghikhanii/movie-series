@@ -10,16 +10,12 @@ abstract class HomeState extends Equatable {
 class HomeInitial extends HomeState {}
 
 class HomeSucces extends HomeState {
-  final List<TopRatedItemEntity> topRated;
-
-  const HomeSucces(
-    this.topRated,
-  );
+  final List<ResultItemEntity> topRated;
+  final List<ResultItemEntity> nowPlaying;
+  const HomeSucces(this.topRated, this.nowPlaying);
 
   @override
-  List<Object> get props => [
-        topRated,
-      ];
+  List<Object> get props => [topRated, nowPlaying];
 }
 
 class HomeFailed extends HomeState {

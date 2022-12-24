@@ -24,7 +24,7 @@ class _HomeScreenState extends State<HomeScreen> with TickerProviderStateMixin {
     return Scaffold(
         body: BlocProvider(
       create: (BuildContext context) {
-        final bloc = HomeBloc(topRatedRepository);
+        final bloc = HomeBloc(topRatedRepository, nowPlayingRepository);
         bloc.add(HomeStarted());
         return bloc;
       },
