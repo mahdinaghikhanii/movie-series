@@ -1,7 +1,7 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
-import 'package:movie_series/data/repo/now_playing_repository.dart';
+import '../../data/repo/now_playing_repository.dart';
 
 import '../../common/app_constans.dart';
 import '../../common/dimensions.dart';

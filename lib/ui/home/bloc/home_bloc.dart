@@ -1,8 +1,8 @@
 import 'package:equatable/equatable.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
-import 'package:movie_series/data/entity/now_playing_item.dart';
-import 'package:movie_series/data/repo/now_playing_repository.dart';
+import '../../../data/entity/now_playing_item.dart';
+import '../../../data/repo/now_playing_repository.dart';
 
 import '../../../common/exception.dart';
 import '../../../data/entity/resultItem.dart';

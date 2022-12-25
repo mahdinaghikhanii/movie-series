@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
-import 'package:movie_series/common/dimensions.dart';
-import 'package:movie_series/data/entity/now_playing_item.dart';
-import 'package:movie_series/ui/widgets/image.dart';
+import '../../common/dimensions.dart';
+import '../../data/entity/now_playing_item.dart';
+import 'image.dart';
 
 import '../../common/app_constans.dart';
 

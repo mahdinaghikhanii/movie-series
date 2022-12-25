@@ -1,5 +1,5 @@
 import 'package:dio/dio.dart';
-import 'package:movie_series/data/entity/now_playing_item.dart';
+import '../entity/now_playing_item.dart';
 import '../../common/app_constans.dart';
 
 import '../common/htttp_validate_respone.dart';

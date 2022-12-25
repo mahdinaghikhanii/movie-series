@@ -1,4 +1,4 @@
-import 'package:movie_series/data/entity/resultItem.dart';
+import 'resultItem.dart';
 
 class NowPlayingItemEntity {
   final int page;
