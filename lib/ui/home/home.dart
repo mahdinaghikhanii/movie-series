@@ -10,6 +10,7 @@ import '../widgets/image.dart';
 
 import '../widgets/showitems_horizantal.dart';
 import 'bloc/home_bloc.dart';
+import 'package:flutter_native_splash/flutter_native_splash.dart';
 
 class HomeScreen extends StatefulWidget {
   const HomeScreen({super.key});
@@ -21,6 +22,7 @@ class HomeScreen extends StatefulWidget {
 class _HomeScreenState extends State<HomeScreen> with TickerProviderStateMixin {
   @override
   Widget build(BuildContext context) {
+    FlutterNativeSplash.remove();
     TabController tabController = TabController(length: 4, vsync: this);
     return Scaffold(
         body: BlocProvider(
