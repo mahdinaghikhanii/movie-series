@@ -1,13 +1,11 @@
-import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:movie_series/ui/widgets/loading.dart';
 import '../../data/repo/now_playing_repository.dart';
-
 import '../../common/app_constans.dart';
 import '../../common/dimensions.dart';
 import '../../data/repo/top_rated_repository.dart';
 import '../widgets/image.dart';
-
 import '../widgets/showitems_horizantal.dart';
 import 'bloc/home_bloc.dart';
 import 'package:flutter_native_splash/flutter_native_splash.dart';
@@ -109,10 +107,8 @@ class _HomeScreenState extends State<HomeScreen> with TickerProviderStateMixin {
                         child: TabBarView(controller: tabController, children: [
                           ShowItemsHorizantal(
                               nowPlayingItemEntity: state.nowPlaying),
-                          Text(
-                            "checj",
-                            style: Theme.of(context).textTheme.bodyMedium,
-                          ),
+                          ShowItemsHorizantal(
+                              nowPlayingItemEntity: state.nowPlaying),
                           Text(
                             "sssdsadasdajs",
                             style: Theme.of(context).textTheme.bodyMedium,
@@ -140,11 +136,7 @@ class _HomeScreenState extends State<HomeScreen> with TickerProviderStateMixin {
               style: Theme.of(context).textTheme.subtitle1,
             ));
           } else if (state is HomeLoading) {
-            return const Center(
-              child: CupertinoActivityIndicator(
-                color: Colors.white,
-              ),
-            );
+            return const LoadingWidgets();
           } else {
             throw "bad state";
           }

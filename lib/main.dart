@@ -18,6 +18,8 @@ class MyApp extends StatelessWidget {
         title: 'Movie series',
         debugShowCheckedModeBanner: false,
         theme: ThemeData(
+            appBarTheme: const AppBarTheme(
+                backgroundColor: LightThemeColor.scafoldBackGroundColor),
             textTheme: const TextTheme(
                 titleSmall: TextStyle(
                     color: Colors.white,
