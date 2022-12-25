@@ -1,5 +1,7 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
+import 'package:movie_series/ui/search/search.dart';
+import 'package:movie_series/ui/whatch_list/whatch_list.dart';
 
 import 'home/home.dart';
 
@@ -54,16 +56,8 @@ class _RootScreanState extends State<RootScrean> {
             index: selectedScreenIndex,
             children: [
               _navigator(_homeKey, homeIndex, const HomeScreen()),
-              _navigator(_cartKey, cartIndex, const Text("")),
-              _navigator(
-                  _profileKey,
-                  profileIndex,
-                  Center(
-                    child: Column(
-                      mainAxisAlignment: MainAxisAlignment.center,
-                      children: const [],
-                    ),
-                  ))
+              _navigator(_cartKey, cartIndex, const SearchScreen()),
+              _navigator(_profileKey, profileIndex, const WhatchListScreen())
             ],
           ),
           bottomNavigationBar: BottomNavigationBar(

@@ -66,7 +66,7 @@ class _HomeScreenState extends State<HomeScreen> with TickerProviderStateMixin {
                             itemCount: state.topRated.length,
                             itemBuilder: (context, index) {
                               return Padding(
-                                  padding: const EdgeInsets.only(right: 30),
+                                  padding: const EdgeInsets.only(right: 20),
                                   child: ImageLoadingService(
                                       imgPath:
                                           "${AppConstans.getPoster}${state.topRated[index].posterPath}"));
