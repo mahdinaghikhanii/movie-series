@@ -8,6 +8,7 @@ import '../../common/dimensions.dart';
 import '../../data/repo/top_rated_repository.dart';
 import '../widgets/image.dart';
 
+import '../widgets/showitems_horizantal.dart';
 import 'bloc/home_bloc.dart';
 
 class HomeScreen extends StatefulWidget {
@@ -99,14 +100,13 @@ class _HomeScreenState extends State<HomeScreen> with TickerProviderStateMixin {
                           ));
 
                     case 3:
-                      return SizedBox(
+                      return Container(
+                        margin: const EdgeInsets.only(top: 24, left: 0),
                         width: MediaQuery.of(context).size.width,
-                        height: MediaQuery.of(context).size.height,
+                        height: 450,
                         child: TabBarView(controller: tabController, children: [
-                          Text(
-                            "ssss",
-                            style: Theme.of(context).textTheme.bodyMedium,
-                          ),
+                          ShowItemsHorizantal(
+                              nowPlayingItemEntity: state.nowPlaying),
                           Text(
                             "checj",
                             style: Theme.of(context).textTheme.bodyMedium,
@@ -120,6 +120,11 @@ class _HomeScreenState extends State<HomeScreen> with TickerProviderStateMixin {
                             style: Theme.of(context).textTheme.bodyMedium,
                           )
                         ]),
+                      );
+                    case 4:
+                      return SizedBox(
+                        height: 30,
+                        width: MediaQuery.of(context).size.width,
                       );
 
                     default:
