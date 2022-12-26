@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:movie_series/ui/detail/detail.dart';
 import '../widgets/loading.dart';
 import '../../data/repo/now_playing_repository.dart';
 import '../../common/app_constans.dart';
@@ -64,11 +65,20 @@ class _HomeScreenState extends State<HomeScreen> with TickerProviderStateMixin {
                             scrollDirection: Axis.horizontal,
                             itemCount: state.topRated.resultEntity.length,
                             itemBuilder: (context, index) {
-                              return Padding(
-                                  padding: const EdgeInsets.only(right: 20),
-                                  child: ImageLoadingService(
-                                      imgPath:
-                                          "${AppConstans.getPoster}${state.topRated.resultEntity[index].posterPath}"));
+                              return InkWell(
+                                onTap: () {
+                                  Navigator.push(
+                                      context,
+                                      MaterialPageRoute(
+                                          builder: ((context) =>
+                                              const DetailsScreen())));
+                                },
+                                child: Padding(
+                                    padding: const EdgeInsets.only(right: 20),
+                                    child: ImageLoadingService(
+                                        imgPath:
+                                            "${AppConstans.getPoster}${state.topRated.resultEntity[index].posterPath}")),
+                              );
                             }),
                       );
 

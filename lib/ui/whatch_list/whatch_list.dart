@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:movie_series/ui/widgets/custom_appbar.dart';
 import '../../theme.dart';
 
 class WhatchListScreen extends StatelessWidget {
@@ -7,15 +8,7 @@ class WhatchListScreen extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      appBar: AppBar(
-        centerTitle: true,
-        title: Text(
-          'Watch list',
-          style:
-              Theme.of(context).textTheme.titleMedium!.copyWith(fontSize: 18),
-        ),
-        elevation: 0,
-      ),
+      appBar: const CustomAppbar(iconBack: false, title: "Watch list"),
       body: Center(
         child: Column(
           mainAxisAlignment: MainAxisAlignment.center,
