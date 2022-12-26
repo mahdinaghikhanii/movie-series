@@ -4,7 +4,7 @@ import 'package:movie_series/ui/widgets/loading.dart';
 import '../../data/repo/now_playing_repository.dart';
 import '../../common/app_constans.dart';
 import '../../common/dimensions.dart';
-import '../../data/repo/top_rated_repository.dart';
+
 import '../widgets/image.dart';
 import '../widgets/showitems_horizantal.dart';
 import 'bloc/home_bloc.dart';
@@ -25,7 +25,8 @@ class _HomeScreenState extends State<HomeScreen> with TickerProviderStateMixin {
     return Scaffold(
         body: BlocProvider(
       create: (BuildContext context) {
-        final bloc = HomeBloc(topRatedRepository, nowPlayingRepository);
+        final bloc = HomeBloc(movieRepository, movieRepository, movieRepository,
+            movieRepository, movieRepository);
         bloc.add(HomeStarted());
         return bloc;
       },
@@ -61,13 +62,13 @@ class _HomeScreenState extends State<HomeScreen> with TickerProviderStateMixin {
                             padding: const EdgeInsets.only(
                                 left: Dimensions.padingdefultSize),
                             scrollDirection: Axis.horizontal,
-                            itemCount: state.topRated.length,
+                            itemCount: state.topRated.resultEntity.length,
                             itemBuilder: (context, index) {
                               return Padding(
                                   padding: const EdgeInsets.only(right: 20),
                                   child: ImageLoadingService(
                                       imgPath:
-                                          "${AppConstans.getPoster}${state.topRated[index].posterPath}"));
+                                          "${AppConstans.getPoster}${state.topRated.resultEntity[index].posterPath}"));
                             }),
                       );
 
@@ -94,7 +95,7 @@ class _HomeScreenState extends State<HomeScreen> with TickerProviderStateMixin {
                             tabs: const [
                               Tab(text: "Now playing"),
                               Tab(text: "Upcoming"),
-                              Tab(text: "Top rated"),
+                              Tab(text: "Toprated"),
                               Tab(text: "Popular"),
                             ],
                           ));
@@ -108,15 +109,11 @@ class _HomeScreenState extends State<HomeScreen> with TickerProviderStateMixin {
                           ShowItemsHorizantal(
                               nowPlayingItemEntity: state.nowPlaying),
                           ShowItemsHorizantal(
-                              nowPlayingItemEntity: state.nowPlaying),
-                          Text(
-                            "sssdsadasdajs",
-                            style: Theme.of(context).textTheme.bodyMedium,
-                          ),
-                          Text(
-                            "sdiasjdsadjasidsa",
-                            style: Theme.of(context).textTheme.bodyMedium,
-                          )
+                              nowPlayingItemEntity: state.upComing),
+                          ShowItemsHorizantal(
+                              nowPlayingItemEntity: state.topRatedTabBar),
+                          ShowItemsHorizantal(
+                              nowPlayingItemEntity: state.popular),
                         ]),
                       );
                     case 4:

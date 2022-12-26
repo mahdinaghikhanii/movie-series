@@ -1,19 +1,42 @@
 import '../../common/http_client.dart';
-import '../entity/now_playing_item.dart';
+import '../entity/movie_item.dart';
 import '../source/now_playing_data_source.dart';
 
-final nowPlayingRepository =
-    NowPlayingRepository(NowPlayingDataSource(httpClint));
+final movieRepository = MovieRepository(MovieDataSource(httpClint));
 
-abstract class INowPlayingRepository {
-  Future<NowPlayingItemEntity> getNowPlaying();
+abstract class IMovieRepository {
+  Future<MovieItemEntity> getNowPlaying();
+  Future<MovieItemEntity> getUpCominf();
+  Future<MovieItemEntity> getTopRated({required int page});
+  Future<MovieItemEntity> getTopRatedTabBar({required int page});
+  Future<MovieItemEntity> getPopular();
 }
 
-class NowPlayingRepository implements INowPlayingRepository {
-  INowPlayingDataSource nowPlayingDataSource;
-  NowPlayingRepository(this.nowPlayingDataSource);
+class MovieRepository implements IMovieRepository {
+  IMovieDataSource movieDataSource;
+  MovieRepository(this.movieDataSource);
   @override
-  Future<NowPlayingItemEntity> getNowPlaying() {
-    return nowPlayingDataSource.getNowPlaying();
+  Future<MovieItemEntity> getNowPlaying() {
+    return movieDataSource.getNowPlaying();
+  }
+
+  @override
+  Future<MovieItemEntity> getUpCominf() {
+    return movieDataSource.getUpCominf();
+  }
+
+  @override
+  Future<MovieItemEntity> getPopular() {
+    return movieDataSource.getPopular();
+  }
+
+  @override
+  Future<MovieItemEntity> getTopRated({required int page}) {
+    return movieDataSource.getTopRated(page: page);
+  }
+
+  @override
+  Future<MovieItemEntity> getTopRatedTabBar({required int page}) {
+    return movieDataSource.getTopRatedTabBar(page: page);
   }
 }

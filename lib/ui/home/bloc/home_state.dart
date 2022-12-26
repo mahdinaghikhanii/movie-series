@@ -10,9 +10,13 @@ abstract class HomeState extends Equatable {
 class HomeInitial extends HomeState {}
 
 class HomeSucces extends HomeState {
-  final List<ResultItemEntity> topRated;
-  final NowPlayingItemEntity nowPlaying;
-  const HomeSucces(this.topRated, this.nowPlaying);
+  final MovieItemEntity topRated;
+  final MovieItemEntity nowPlaying;
+  final MovieItemEntity upComing;
+  final MovieItemEntity popular;
+  final MovieItemEntity topRatedTabBar;
+  const HomeSucces(this.topRated, this.nowPlaying, this.upComing, this.popular,
+      this.topRatedTabBar);
 
   @override
   List<Object> get props => [topRated, nowPlaying];

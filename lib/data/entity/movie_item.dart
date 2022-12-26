@@ -1,12 +1,12 @@
 import 'resultItem.dart';
 
-class NowPlayingItemEntity {
+class MovieItemEntity {
   final int page;
   final List<ResultItemEntity> resultEntity;
   final int totalPages;
   final int totalResult;
 
-  NowPlayingItemEntity.fromJson(Map<String, dynamic> json)
+  MovieItemEntity.fromJson(Map<String, dynamic> json)
       : page = json['page'],
         resultEntity = ResultItemEntity.parssJsonArray(json['results']),
         totalPages = json['total_pages'] as int,

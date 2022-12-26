@@ -1,12 +1,12 @@
 import 'package:flutter/material.dart';
 import '../../common/dimensions.dart';
-import '../../data/entity/now_playing_item.dart';
+import '../../data/entity/movie_item.dart';
 import 'image.dart';
 
 import '../../common/app_constans.dart';
 
 class ShowItemsHorizantal extends StatelessWidget {
-  final NowPlayingItemEntity nowPlayingItemEntity;
+  final MovieItemEntity nowPlayingItemEntity;
   const ShowItemsHorizantal({super.key, required this.nowPlayingItemEntity});
 
   @override
