@@ -131,9 +131,16 @@ class _HomeScreenState extends State<HomeScreen> with TickerProviderStateMixin {
                 });
           } else if (state is HomeFailed) {
             return Center(
-                child: Text(
-              state.appeExeption.exception.toString(),
-              style: Theme.of(context).textTheme.subtitle1,
+                child: Column(
+              mainAxisAlignment: MainAxisAlignment.center,
+              children: [
+                Image.asset("assets/img/problems.png"),
+                const SizedBox(height: 10),
+                Text(
+                  state.appeExeption.exception.toString(),
+                  style: Theme.of(context).textTheme.subtitle1,
+                ),
+              ],
             ));
           } else if (state is HomeLoading) {
             return const LoadingWidgets();
