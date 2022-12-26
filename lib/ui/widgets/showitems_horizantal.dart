@@ -1,9 +1,9 @@
 import 'package:flutter/material.dart';
+
+import '../../common/app_constans.dart';
 import '../../common/dimensions.dart';
 import '../../data/entity/movie_item.dart';
 import 'image.dart';
-
-import '../../common/app_constans.dart';
 
 class ShowItemsHorizantal extends StatelessWidget {
   final MovieItemEntity nowPlayingItemEntity;

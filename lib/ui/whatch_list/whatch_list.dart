@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:movie_series/theme.dart';
+import '../../theme.dart';
 
 class WhatchListScreen extends StatelessWidget {
   const WhatchListScreen({super.key});

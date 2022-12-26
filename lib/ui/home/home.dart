@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
-import 'package:movie_series/ui/widgets/loading.dart';
+import '../widgets/loading.dart';
 import '../../data/repo/now_playing_repository.dart';
 import '../../common/app_constans.dart';
 import '../../common/dimensions.dart';

@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:loading_animation_widget/loading_animation_widget.dart';
-import 'package:movie_series/theme.dart';
+import '../../theme.dart';
 
 class LoadingWidgets extends StatelessWidget {
   const LoadingWidgets({super.key});

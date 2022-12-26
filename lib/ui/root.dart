@@ -1,7 +1,7 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
-import 'package:movie_series/ui/search/search.dart';
-import 'package:movie_series/ui/whatch_list/whatch_list.dart';
+import 'search/search.dart';
+import 'whatch_list/whatch_list.dart';
 
 import 'home/home.dart';
 
