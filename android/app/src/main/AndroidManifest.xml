@@ -2,8 +2,8 @@
     package="com.example.movie_series">
     <uses-permission android:name="android.permission.INTERNET"/>
    <application
-        android:label="movie_series"
-        android:name="Watch!?"
+        android:label="Whatch!?"
+        android:name="${applicationName}"
         android:icon="@mipmap/ic_launcher">
         <activity
             android:name=".MainActivity"

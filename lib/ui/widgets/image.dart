@@ -4,13 +4,20 @@ import 'package:flutter/material.dart';
 
 class ImageLoadingService extends StatelessWidget {
   final String imgPath;
-  const ImageLoadingService({super.key, required this.imgPath});
+  final BorderRadius radius;
+  final BoxFit boxFit;
+  const ImageLoadingService(
+      {super.key,
+      required this.imgPath,
+      required this.radius,
+      required this.boxFit});
 
   @override
   Widget build(BuildContext context) {
     return ClipRRect(
-      borderRadius: BorderRadius.circular(16),
+      borderRadius: radius,
       child: CachedNetworkImage(
+          fit: boxFit,
           imageUrl: imgPath,
           progressIndicatorBuilder: (context, url, progress) =>
               const CupertinoActivityIndicator(

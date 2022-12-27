@@ -70,12 +70,16 @@ class _HomeScreenState extends State<HomeScreen> with TickerProviderStateMixin {
                                   Navigator.push(
                                       context,
                                       MaterialPageRoute(
-                                          builder: ((context) =>
-                                              const DetailsScreen())));
+                                          builder: ((context) => DetailsScreen(
+                                                itemEntity: state.topRated
+                                                    .resultEntity[index],
+                                              ))));
                                 },
                                 child: Padding(
                                     padding: const EdgeInsets.only(right: 20),
                                     child: ImageLoadingService(
+                                        boxFit: BoxFit.contain,
+                                        radius: BorderRadius.circular(16),
                                         imgPath:
                                             "${AppConstans.getPoster}${state.topRated.resultEntity[index].posterPath}")),
                               );

@@ -25,6 +25,8 @@ class ShowItemsHorizantal extends StatelessWidget {
         return ClipRRect(
           borderRadius: BorderRadius.circular(16),
           child: ImageLoadingService(
+              boxFit: BoxFit.contain,
+              radius: BorderRadius.circular(16),
               imgPath:
                   "${AppConstans.getPoster}${nowPlayingItemEntity.resultEntity[index].posterPath}"),
         );
