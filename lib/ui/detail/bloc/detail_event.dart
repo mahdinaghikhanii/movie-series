@@ -10,6 +10,4 @@ abstract class DetailEvent extends Equatable {
 class DetailStarted extends DetailEvent {
   final int idMovie;
   const DetailStarted({required this.idMovie});
-  @override
-  List<Object> get props => [idMovie];
 }

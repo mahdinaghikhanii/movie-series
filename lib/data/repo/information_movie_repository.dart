@@ -1,8 +1,12 @@
+import 'package:movie_series/common/http_client.dart';
 import 'package:movie_series/data/entity/information_movie.dart';
 import 'package:movie_series/data/source/information_movie_data_source.dart';
 
+final informationRepository =
+    InformationMovieRepository(InformationMovieDataSourec(httpClint));
+
 abstract class IInformationMovieRepository {
-  Future<InformationMovie> getInformationMovie({required String idMovie});
+  Future<InformationMovieEntity> getInformationMovie({required String idMovie});
 }
 
 class InformationMovieRepository implements IInformationMovieRepository {
@@ -10,7 +14,8 @@ class InformationMovieRepository implements IInformationMovieRepository {
   InformationMovieRepository(this.dataSourec);
 
   @override
-  Future<InformationMovie> getInformationMovie({required String idMovie}) {
+  Future<InformationMovieEntity> getInformationMovie(
+      {required String idMovie}) {
     return dataSourec.getInformationMovie(idMovie: idMovie);
   }
 }

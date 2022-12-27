@@ -1,4 +1,4 @@
-class InformationMovie {
+class InformationMovieEntity {
   bool? adult;
   String? backdropPath;
   BelongsToCollection? belongsToCollection;
@@ -25,7 +25,7 @@ class InformationMovie {
   double? voteAverage;
   int? voteCount;
 
-  InformationMovie(
+  InformationMovieEntity(
       {this.adult,
       this.backdropPath,
       this.belongsToCollection,
@@ -52,7 +52,7 @@ class InformationMovie {
       this.voteAverage,
       this.voteCount});
 
-  InformationMovie.fromJson(Map<String, dynamic> json) {
+  InformationMovieEntity.fromJson(Map<String, dynamic> json) {
     adult = json['adult'];
     backdropPath = json['backdrop_path'];
     belongsToCollection = json['belongs_to_collection'] != null

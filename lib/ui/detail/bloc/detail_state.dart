@@ -9,7 +9,13 @@ abstract class DetailState extends Equatable {
 
 class DetailInitial extends DetailState {}
 
-class DetailSucces extends DetailState {}
+class DetailSucces extends DetailState {
+  final InformationMovieEntity informationMovieEntity;
+  const DetailSucces(this.informationMovieEntity);
+
+  @override
+  List<Object> get props => [informationMovieEntity];
+}
 
 class DetailFailed extends DetailState {
   final AppeExeption exeption;

@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:movie_series/ui/detail/detail.dart';
+import 'package:movie_series/ui/widgets/empty_state.dart';
 import '../widgets/loading.dart';
 import '../../data/repo/now_playing_repository.dart';
 import '../../common/app_constans.dart';
@@ -150,18 +151,7 @@ class _HomeScreenState extends State<HomeScreen> with TickerProviderStateMixin {
                   }
                 });
           } else if (state is HomeFailed) {
-            return Center(
-                child: Column(
-              mainAxisAlignment: MainAxisAlignment.center,
-              children: [
-                Image.asset("assets/img/problems.png"),
-                const SizedBox(height: 10),
-                Text(
-                  state.appeExeption.exception.toString(),
-                  style: Theme.of(context).textTheme.subtitle1,
-                ),
-              ],
-            ));
+            return EmptyState(appeExeption: state.appeExeption);
           } else if (state is HomeLoading) {
             return const LoadingWidgets();
           } else {
