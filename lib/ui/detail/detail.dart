@@ -33,8 +33,10 @@ class DetailsScreen extends StatelessWidget {
                     imageUrl:
                         "${AppConstans.getPoster}${itemEntity.backdropPath}",
                     progressIndicatorBuilder: (context, url, progress) =>
-                        const CupertinoActivityIndicator(
-                          color: Colors.white,
+                        Container(
+                          height: 240,
+                          width: MediaQuery.of(context).size.width,
+                          color: const Color(0xFF92929D),
                         )),
                 Positioned(
                     right: 0,

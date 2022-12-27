@@ -18,17 +18,28 @@ class ShowItemsHorizantal extends StatelessWidget {
       gridDelegate: const SliverGridDelegateWithFixedCrossAxisCount(
           crossAxisCount: 2,
           mainAxisSpacing: 0,
-          mainAxisExtent: 155,
+          mainAxisExtent: 160,
           crossAxisSpacing: 20),
       itemBuilder: (BuildContext context, int index) {
         debugPrint(nowPlayingItemEntity.resultEntity[index].title);
         return ClipRRect(
           borderRadius: BorderRadius.circular(16),
-          child: ImageLoadingService(
-              boxFit: BoxFit.contain,
-              radius: BorderRadius.circular(16),
-              imgPath:
-                  "${AppConstans.getPoster}${nowPlayingItemEntity.resultEntity[index].posterPath}"),
+          child: Container(
+            margin: const EdgeInsets.symmetric(horizontal: 10),
+            child: ImageLoadingService(
+                loading: Container(
+                  margin: const EdgeInsets.symmetric(horizontal: 10),
+                  width: 140,
+                  decoration: BoxDecoration(
+                      color: const Color(0xFF92929D),
+                      borderRadius: BorderRadius.circular(16)),
+                  height: MediaQuery.of(context).size.height * 0.20,
+                ),
+                boxFit: BoxFit.cover,
+                radius: BorderRadius.circular(16),
+                imgPath:
+                    "${AppConstans.getPoster}${nowPlayingItemEntity.resultEntity[index].posterPath}"),
+          ),
         );
       },
     );

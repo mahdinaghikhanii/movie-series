@@ -5,10 +5,12 @@ import 'package:flutter/material.dart';
 class ImageLoadingService extends StatelessWidget {
   final String imgPath;
   final BorderRadius radius;
+  final Widget? loading;
   final BoxFit boxFit;
   const ImageLoadingService(
       {super.key,
       required this.imgPath,
+      this.loading,
       required this.radius,
       required this.boxFit});
 
@@ -20,6 +22,7 @@ class ImageLoadingService extends StatelessWidget {
           fit: boxFit,
           imageUrl: imgPath,
           progressIndicatorBuilder: (context, url, progress) =>
+              loading ??
               const CupertinoActivityIndicator(
                 color: Colors.white,
               )),

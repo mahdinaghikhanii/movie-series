@@ -9,6 +9,7 @@ import '../../common/dimensions.dart';
 import '../widgets/image.dart';
 import '../widgets/showitems_horizantal.dart';
 import 'bloc/home_bloc.dart';
+// ignore: depend_on_referenced_packages
 import 'package:flutter_native_splash/flutter_native_splash.dart';
 
 class HomeScreen extends StatefulWidget {
@@ -78,6 +79,14 @@ class _HomeScreenState extends State<HomeScreen> with TickerProviderStateMixin {
                                 child: Padding(
                                     padding: const EdgeInsets.only(right: 20),
                                     child: ImageLoadingService(
+                                        loading: Container(
+                                          width: 180,
+                                          color: const Color(0xFF92929D),
+                                          height: MediaQuery.of(context)
+                                                  .size
+                                                  .height *
+                                              0.30,
+                                        ),
                                         boxFit: BoxFit.contain,
                                         radius: BorderRadius.circular(16),
                                         imgPath:
