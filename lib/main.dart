@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+// ignore: depend_on_referenced_packages
 import 'package:flutter_native_splash/flutter_native_splash.dart';
 
 import 'theme.dart';

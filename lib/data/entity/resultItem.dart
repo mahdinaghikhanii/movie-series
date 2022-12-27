@@ -12,7 +12,7 @@ class ResultItemEntity {
   final String releaseDate;
   final String title;
   final bool video;
-  // final double voteAverage;
+  final String voteAverage;
   final int voteCount;
 
   ResultItemEntity(
@@ -27,7 +27,7 @@ class ResultItemEntity {
       this.releaseDate,
       this.title,
       this.video,
-      // this.voteAverage,
+      this.voteAverage,
       this.voteCount);
 
   ResultItemEntity.fromJson(Map<String, dynamic> json)
@@ -42,7 +42,7 @@ class ResultItemEntity {
         releaseDate = json['release_date'],
         title = json['title'],
         video = json['video'],
-        //   voteAverage = json['vote_average'],
+        voteAverage = json['vote_average'].toString(),
         voteCount = json['vote_count'];
 
   static List<ResultItemEntity> parssJsonArray(List<dynamic> jsonArray) {
