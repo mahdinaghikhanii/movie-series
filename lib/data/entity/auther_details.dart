@@ -5,15 +5,17 @@ class AuthorDetails {
   final double rating;
 
   AuthorDetails.fromJson(Map<String, dynamic> json)
-      : name = json['name'],
-        username = json['username'],
-        avatarPath = json['avatar_path'],
-        rating = json['rating'];
+      : name = json['name'] ?? "",
+        username = json['username'] ?? "",
+        avatarPath = json['avatar_path'] ?? "",
+        rating = json['rating'] ?? 0.0;
 
   static List<AuthorDetails> parssJsonArrayAuther(List<dynamic> jsonArray) {
     final List<AuthorDetails> items = [];
+
     for (var json in jsonArray) {
-      items.add(AuthorDetails.fromJson(json as Map<String, dynamic>));
+      items.add(AuthorDetails.fromJson(json));
+      items.toList();
     }
     return items;
   }

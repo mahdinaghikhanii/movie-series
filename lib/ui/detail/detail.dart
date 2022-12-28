@@ -4,6 +4,7 @@ import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:movie_series/common/dimensions.dart';
+import 'package:movie_series/common/exception.dart';
 import 'package:movie_series/data/entity/resultItem_movie.dart';
 import 'package:movie_series/data/repo/information_movie_repository.dart';
 import 'package:movie_series/data/repo/reviews_movie_repository.dart';
@@ -206,53 +207,75 @@ class _DetailsScreenState extends State<DetailsScreen>
                                 final reviewsItem =
                                     state.reviewsEntiry.results[index];
 
-                                return Padding(
-                                  padding: const EdgeInsets.only(bottom: 20),
-                                  child: Row(
-                                    mainAxisAlignment: MainAxisAlignment.start,
-                                    crossAxisAlignment:
-                                        CrossAxisAlignment.start,
-                                    children: [
-                                      Column(
-                                        children: [
-                                          SizedBox(
-                                            height: 55,
-                                            width: 55,
-                                            child: ImageLoadingService(
-                                                imgPath: AppConstans
-                                                        .reviewsAvatar +
-                                                    state
-                                                        .reviewsEntiry
-                                                        .results[index]
-                                                        .authorDetails[index]
-                                                        .avatarPath
-                                                        .toString(),
-                                                radius:
-                                                    BorderRadius.circular(40),
-                                                boxFit: BoxFit.cover),
-                                          ),
-                                          const SizedBox(height: 8),
-                                          Text(reviewsItem
-                                              .authorDetails[index].rating
-                                              .toString())
-                                        ],
-                                      ),
-                                      const SizedBox(width: 10),
-                                      Expanded(
-                                        child: Column(
-                                          crossAxisAlignment:
-                                              CrossAxisAlignment.start,
+                                if (reviewsItem.content.isEmpty) {
+                                  return EmptyState(
+                                      ontap: () {
+                                        BlocProvider.of<DetailBloc>(context)
+                                            .add(DetailStarted(
+                                                idMovie: widget.itemEntity.id));
+                                      },
+                                      appeExeption: AppeExeption(
+                                          exception:
+                                              "No comment has been given"));
+                                } else {
+                                  return Padding(
+                                    padding: const EdgeInsets.only(bottom: 20),
+                                    child: Row(
+                                      mainAxisAlignment:
+                                          MainAxisAlignment.start,
+                                      crossAxisAlignment:
+                                          CrossAxisAlignment.start,
+                                      children: [
+                                        Column(
                                           children: [
+                                            SizedBox(
+                                              height: 55,
+                                              width: 55,
+                                              child: ImageLoadingService(
+                                                  imgPath: AppConstans
+                                                          .reviewsAvatar +
+                                                      state
+                                                          .reviewsEntiry
+                                                          .results[index]
+                                                          .authorDetails
+                                                          .avatarPath
+                                                          .toString(),
+                                                  radius:
+                                                      BorderRadius.circular(40),
+                                                  boxFit: BoxFit.cover),
+                                            ),
+                                            const SizedBox(height: 8),
                                             Text(reviewsItem
-                                                .authorDetails[index].name),
-                                            const SizedBox(height: 20),
-                                            Text(reviewsItem.content.toString())
+                                                .authorDetails.rating
+                                                .toString())
                                           ],
                                         ),
-                                      )
-                                    ],
-                                  ),
-                                );
+                                        const SizedBox(width: 10),
+                                        Expanded(
+                                          child: Column(
+                                            crossAxisAlignment:
+                                                CrossAxisAlignment.start,
+                                            children: [
+                                              Text(
+                                                reviewsItem.authorDetails.name
+                                                        .isNotEmpty
+                                                    ? reviewsItem
+                                                        .authorDetails.name
+                                                    : "Anonymus",
+                                                style: Theme.of(context)
+                                                    .textTheme
+                                                    .titleSmall,
+                                              ),
+                                              const SizedBox(height: 10),
+                                              Text(reviewsItem.content
+                                                  .toString())
+                                            ],
+                                          ),
+                                        )
+                                      ],
+                                    ),
+                                  );
+                                }
                               })),
                           Text('data')
                         ]))
@@ -264,7 +287,12 @@ class _DetailsScreenState extends State<DetailsScreen>
           if (state is DetailLoading) {
             return const LoadingWidgets();
           } else if (state is DetailFailed) {
-            return EmptyState(appeExeption: state.exeption);
+            return EmptyState(
+                ontap: () {
+                  BlocProvider.of<DetailBloc>(context)
+                      .add(DetailStarted(idMovie: widget.itemEntity.id));
+                },
+                appeExeption: state.exeption);
           } else {
             throw "Bad state";
           }

@@ -2,7 +2,7 @@ import 'package:movie_series/data/entity/auther_details.dart';
 
 class ResultsReviewsEntity {
   final String author;
-  final List<AuthorDetails> authorDetails;
+  final AuthorDetails authorDetails;
   final String content;
   final String createdAt;
   final String id;
@@ -11,8 +11,7 @@ class ResultsReviewsEntity {
 
   ResultsReviewsEntity.fromJson(Map<String, dynamic> json)
       : author = json['author'],
-        authorDetails =
-            AuthorDetails.parssJsonArrayAuther(json['author_details']),
+        authorDetails = AuthorDetails.fromJson(json['author_details']),
         content = json['content'],
         createdAt = json['created_at'],
         id = json['id'],

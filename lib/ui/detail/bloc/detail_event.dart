@@ -11,3 +11,8 @@ class DetailStarted extends DetailEvent {
   final int idMovie;
   const DetailStarted({required this.idMovie});
 }
+
+class DetailRefresh extends DetailEvent {
+  final int idMovie;
+  const DetailRefresh({required this.idMovie});
+}

@@ -151,7 +151,11 @@ class _HomeScreenState extends State<HomeScreen> with TickerProviderStateMixin {
                   }
                 });
           } else if (state is HomeFailed) {
-            return EmptyState(appeExeption: state.appeExeption);
+            return EmptyState(
+                ontap: () {
+                  BlocProvider.of<HomeBloc>(context).add(HomeStarted());
+                },
+                appeExeption: state.appeExeption);
           } else if (state is HomeLoading) {
             return const LoadingWidgets();
           } else {
