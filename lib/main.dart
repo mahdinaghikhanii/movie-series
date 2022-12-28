@@ -23,6 +23,8 @@ class MyApp extends StatelessWidget {
             appBarTheme: const AppBarTheme(
                 backgroundColor: LightThemeColor.scafoldBackGroundColor),
             textTheme: const TextTheme(
+                bodyMedium:
+                    TextStyle(color: Colors.white, height: 1.5, fontSize: 15),
                 titleSmall: TextStyle(
                     color: Colors.white,
                     fontWeight: FontWeight.bold,

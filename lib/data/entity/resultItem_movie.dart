@@ -1,6 +1,6 @@
 // ignore_for_file: file_names
 
-class ResultItemEntity {
+class ResultItemMovieEntity {
   final bool adult;
   final String backdropPath;
   final int id;
@@ -15,7 +15,7 @@ class ResultItemEntity {
   final String voteAverage;
   final int voteCount;
 
-  ResultItemEntity(
+  ResultItemMovieEntity(
       this.adult,
       this.backdropPath,
       this.id,
@@ -30,7 +30,7 @@ class ResultItemEntity {
       this.voteAverage,
       this.voteCount);
 
-  ResultItemEntity.fromJson(Map<String, dynamic> json)
+  ResultItemMovieEntity.fromJson(Map<String, dynamic> json)
       : adult = json['adult'],
         backdropPath = json['backdrop_path'],
         id = json['id'],
@@ -45,11 +45,11 @@ class ResultItemEntity {
         voteAverage = json['vote_average'].toString(),
         voteCount = json['vote_count'];
 
-  static List<ResultItemEntity> parssJsonArray(List<dynamic> jsonArray) {
-    final List<ResultItemEntity> item = [];
+  static List<ResultItemMovieEntity> parssJsonArray(List<dynamic> jsonArray) {
+    final List<ResultItemMovieEntity> item = [];
 
     for (var json in jsonArray) {
-      item.add(ResultItemEntity.fromJson(json));
+      item.add(ResultItemMovieEntity.fromJson(json));
     }
     return item;
   }

@@ -8,7 +8,10 @@ import 'image.dart';
 
 class ShowItemsHorizantal extends StatelessWidget {
   final MovieItemEntity nowPlayingItemEntity;
-  const ShowItemsHorizantal({super.key, required this.nowPlayingItemEntity});
+  const ShowItemsHorizantal({
+    super.key,
+    required this.nowPlayingItemEntity,
+  });
 
   @override
   Widget build(BuildContext context) {

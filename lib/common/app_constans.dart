@@ -6,8 +6,10 @@ class AppConstans {
   static const topRatedMovie = "top_rated";
   static const topseries = "";
   static const getPoster = "https://image.tmdb.org/t/p/w500";
+  static const reviewsAvatar = "https://www.gravatar.com/avatar/";
   static const nowPlaying = 'now_playing';
   static const upcoming = 'upcoming';
   static const popular = 'popular';
   static const latest = "latest";
+  static const reviews = "reviews";
 }

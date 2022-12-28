@@ -11,10 +11,11 @@ class DetailInitial extends DetailState {}
 
 class DetailSucces extends DetailState {
   final InformationMovieEntity informationMovieEntity;
-  const DetailSucces(this.informationMovieEntity);
+  final ReviewsEntiry reviewsEntiry;
+  const DetailSucces(this.informationMovieEntity, this.reviewsEntiry);
 
   @override
-  List<Object> get props => [informationMovieEntity];
+  List<Object> get props => [informationMovieEntity, reviewsEntiry];
 }
 
 class DetailFailed extends DetailState {
