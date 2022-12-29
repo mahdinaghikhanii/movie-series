@@ -1,4 +1,4 @@
-import 'package:movie_series/data/entity/auther_details.dart';
+import 'auther_details.dart';
 
 class ResultsReviewsEntity {
   final String author;

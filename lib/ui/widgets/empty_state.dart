@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:movie_series/common/exception.dart';
+import '../../common/exception.dart';
 
 class EmptyState extends StatelessWidget {
   final AppeExeption appeExeption;

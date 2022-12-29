@@ -1,6 +1,6 @@
 import 'package:dio/dio.dart';
-import 'package:movie_series/common/app_constans.dart';
-import 'package:movie_series/data/entity/information_movie.dart';
+import '../../common/app_constans.dart';
+import '../entity/information_movie.dart';
 
 import '../common/htttp_validate_respone.dart';
 

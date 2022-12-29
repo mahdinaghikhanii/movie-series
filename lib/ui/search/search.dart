@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:movie_series/ui/widgets/custom_appbar.dart';
+import '../widgets/custom_appbar.dart';
 import '../../theme.dart';
 
 class SearchScreen extends StatelessWidget {

@@ -1,4 +1,4 @@
-import 'package:movie_series/data/entity/result_reviews.dart';
+import 'result_reviews.dart';
 
 class ReviewsEntiry {
   final int id;

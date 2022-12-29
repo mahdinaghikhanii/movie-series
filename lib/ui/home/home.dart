@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
-import 'package:movie_series/ui/detail/detail.dart';
-import 'package:movie_series/ui/widgets/empty_state.dart';
+import '../detail/detail.dart';
+import '../widgets/empty_state.dart';
 import '../widgets/loading.dart';
 import '../../data/repo/now_playing_repository.dart';
 import '../../common/app_constans.dart';
@@ -81,7 +81,7 @@ class _HomeScreenState extends State<HomeScreen> with TickerProviderStateMixin {
                                     padding: const EdgeInsets.only(right: 20),
                                     child: ImageLoadingService(
                                         loading: Container(
-                                          width: 180,
+                                          width: 165,
                                           color: const Color(0xFF92929D),
                                           height: MediaQuery.of(context)
                                                   .size

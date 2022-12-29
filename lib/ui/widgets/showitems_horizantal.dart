@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:movie_series/ui/detail/detail.dart';
+import '../detail/detail.dart';
 
 import '../../common/app_constans.dart';
 import '../../common/dimensions.dart';
