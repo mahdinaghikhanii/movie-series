@@ -131,6 +131,7 @@ class _DetailsScreenState extends State<DetailsScreen>
                         ],
                       ),
                     ),
+                    const SizedBox(height: 20),
                     Center(
                         child: Row(
                       mainAxisAlignment: MainAxisAlignment.center,
@@ -277,7 +278,7 @@ class _DetailsScreenState extends State<DetailsScreen>
                                   );
                                 }
                               })),
-                          Text('data')
+                          const Text('data')
                         ]))
                   ],
                 ),
