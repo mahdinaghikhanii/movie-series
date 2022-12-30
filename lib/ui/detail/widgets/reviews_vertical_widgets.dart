@@ -6,8 +6,10 @@ import '../../../common/dimensions.dart';
 import '../../../data/entity/reviews.dart';
 
 class ReviewsWidget extends StatelessWidget {
+  final ScrollController scrollController;
   final ReviewsEntiry reviewsEntiry;
-  const ReviewsWidget({super.key, required this.reviewsEntiry});
+  const ReviewsWidget(
+      {super.key, required this.reviewsEntiry, required this.scrollController});
 
   @override
   Widget build(BuildContext context) {

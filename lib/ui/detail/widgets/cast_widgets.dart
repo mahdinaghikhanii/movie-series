@@ -6,12 +6,18 @@ import 'package:movie_series/data/entity/cast_movie.dart';
 import '../../../common/app_constans.dart';
 
 class CastWigets extends StatelessWidget {
+  final ScrollController scrollController;
   final CastMovieEntity castMovieEntity;
-  const CastWigets({super.key, required this.castMovieEntity});
+  const CastWigets(
+      {super.key,
+      required this.castMovieEntity,
+      required this.scrollController});
 
   @override
   Widget build(BuildContext context) {
-    return Expanded(
+    return SizedBox(
+      width: double.infinity,
+      height: double.infinity,
       child: GridView.builder(
           gridDelegate: const SliverGridDelegateWithFixedCrossAxisCount(
               mainAxisSpacing: 0,
@@ -19,6 +25,8 @@ class CastWigets extends StatelessWidget {
               mainAxisExtent: 170,
               crossAxisCount: 2),
           itemCount: castMovieEntity.cast!.length,
+          shrinkWrap: true,
+          controller: scrollController,
           physics: const NeverScrollableScrollPhysics(),
           padding: const EdgeInsets.only(left: 24),
           itemBuilder: ((context, index) {

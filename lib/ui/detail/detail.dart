@@ -3,10 +3,11 @@ import 'package:flutter/cupertino.dart';
 
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
-import 'package:movie_series/data/entity/cast_movie.dart';
-import 'package:movie_series/data/entity/reviews.dart';
 import 'package:movie_series/data/repo/cast_movie_repository.dart';
 import 'package:movie_series/ui/detail/widgets/about_movie_widgets.dart';
+import 'package:movie_series/ui/detail/widgets/cast_widgets.dart';
+import 'package:movie_series/ui/detail/widgets/reviews_vertical_widgets.dart';
+
 import '../../common/dimensions.dart';
 
 import '../../data/entity/resultItem_movie.dart';
@@ -20,8 +21,6 @@ import '../widgets/image.dart';
 import '../widgets/loading.dart';
 
 import '../../common/app_constans.dart';
-import 'widgets/cast_widgets.dart';
-import 'widgets/reviews_vertical_widgets.dart';
 
 class DetailsScreen extends StatefulWidget {
   final ResultItemMovieEntity itemEntity;
@@ -37,9 +36,10 @@ class DetailsScreen extends StatefulWidget {
 
 class _DetailsScreenState extends State<DetailsScreen>
     with TickerProviderStateMixin {
-  ScrollController _controller = ScrollController();
+  late ScrollController _controller;
   @override
   void initState() {
+    _controller = ScrollController();
     super.initState();
   }
 
@@ -64,6 +64,7 @@ class _DetailsScreenState extends State<DetailsScreen>
               ),
               body: Center(
                 child: SingleChildScrollView(
+                  primary: false,
                   controller: _controller,
                   child: Column(
                     children: [
@@ -182,6 +183,7 @@ class _DetailsScreenState extends State<DetailsScreen>
                           height: 60,
                           width: double.infinity,
                           child: TabBar(
+                            physics: const NeverScrollableScrollPhysics(),
                             controller: tabController,
                             padding: const EdgeInsets.only(top: 0, left: 14),
                             isScrollable: true,
@@ -204,12 +206,21 @@ class _DetailsScreenState extends State<DetailsScreen>
                           margin: const EdgeInsets.only(top: 24, left: 0),
                           width: MediaQuery.of(context).size.width,
                           height: MediaQuery.of(context).size.height,
-                          child:
-                              TabBarView(controller: tabController, children: [
-                            AboutMovieWidgets(itemEntity: widget.itemEntity),
-                            ReviewsWidget(reviewsEntiry: state.reviewsEntiry),
-                            CastWigets(castMovieEntity: state.castMovieEntity)
-                          ]))
+                          child: TabBarView(
+                              physics: const NeverScrollableScrollPhysics(),
+                              controller: tabController,
+                              children: [
+                                AboutMovieWidgets(
+                                    itemEntity: widget.itemEntity),
+                                ReviewsWidget(
+                                  reviewsEntiry: state.reviewsEntiry,
+                                  scrollController: _controller,
+                                ),
+                                CastWigets(
+                                  castMovieEntity: state.castMovieEntity,
+                                  scrollController: _controller,
+                                ),
+                              ]))
                     ],
                   ),
                 ),
