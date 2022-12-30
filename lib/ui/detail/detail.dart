@@ -3,7 +3,10 @@ import 'package:flutter/cupertino.dart';
 
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:movie_series/data/entity/cast_movie.dart';
+import 'package:movie_series/data/entity/reviews.dart';
 import 'package:movie_series/data/repo/cast_movie_repository.dart';
+import 'package:movie_series/ui/detail/widgets/about_movie_widgets.dart';
 import '../../common/dimensions.dart';
 
 import '../../data/entity/resultItem_movie.dart';
@@ -17,6 +20,8 @@ import '../widgets/image.dart';
 import '../widgets/loading.dart';
 
 import '../../common/app_constans.dart';
+import 'widgets/cast_widgets.dart';
+import 'widgets/reviews_vertical_widgets.dart';
 
 class DetailsScreen extends StatefulWidget {
   final ResultItemMovieEntity itemEntity;
@@ -32,6 +37,12 @@ class DetailsScreen extends StatefulWidget {
 
 class _DetailsScreenState extends State<DetailsScreen>
     with TickerProviderStateMixin {
+  ScrollController _controller = ScrollController();
+  @override
+  void initState() {
+    super.initState();
+  }
+
   @override
   Widget build(BuildContext context) {
     TabController tabController = TabController(length: 3, vsync: this);
@@ -53,6 +64,7 @@ class _DetailsScreenState extends State<DetailsScreen>
               ),
               body: Center(
                 child: SingleChildScrollView(
+                  controller: _controller,
                   child: Column(
                     children: [
                       const SizedBox(height: 10),
@@ -194,147 +206,9 @@ class _DetailsScreenState extends State<DetailsScreen>
                           height: MediaQuery.of(context).size.height,
                           child:
                               TabBarView(controller: tabController, children: [
-                            Padding(
-                                padding: const EdgeInsets.only(
-                                    left: Dimensions.padingdefultSize),
-                                child: Text(
-                                  widget.itemEntity.overview,
-                                  style: Theme.of(context).textTheme.bodyMedium,
-                                )),
-                            state.reviewsEntiry.results.isEmpty
-                                ? Center(
-                                    child: Column(
-                                      children: [
-                                        const SizedBox(height: 30),
-                                        Image.asset('assets/img/box.png'),
-                                        const SizedBox(height: 20),
-                                        Text(
-                                          "There is no review",
-                                          style: Theme.of(context)
-                                              .textTheme
-                                              .titleSmall,
-                                        ),
-                                      ],
-                                    ),
-                                  )
-                                : ListView.builder(
-                                    physics:
-                                        const NeverScrollableScrollPhysics(),
-                                    itemCount:
-                                        state.reviewsEntiry.results.length,
-                                    shrinkWrap: true,
-                                    padding: const EdgeInsets.only(
-                                      left: Dimensions.padingdefultSize,
-                                    ),
-                                    itemBuilder: ((context, index) {
-                                      final reviewsItem =
-                                          state.reviewsEntiry.results[index];
-
-                                      return Padding(
-                                        padding:
-                                            const EdgeInsets.only(bottom: 20),
-                                        child: Row(
-                                          mainAxisAlignment:
-                                              MainAxisAlignment.start,
-                                          crossAxisAlignment:
-                                              CrossAxisAlignment.start,
-                                          children: [
-                                            Column(
-                                              children: [
-                                                SizedBox(
-                                                  height: 55,
-                                                  width: 55,
-                                                  child: ImageLoadingService(
-                                                      imgPath: AppConstans
-                                                              .reviewsAvatar +
-                                                          state
-                                                              .reviewsEntiry
-                                                              .results[index]
-                                                              .authorDetails
-                                                              .avatarPath
-                                                              .toString(),
-                                                      radius:
-                                                          BorderRadius.circular(
-                                                              40),
-                                                      boxFit: BoxFit.cover),
-                                                ),
-                                                const SizedBox(height: 8),
-                                                Text(reviewsItem
-                                                    .authorDetails.rating
-                                                    .toString())
-                                              ],
-                                            ),
-                                            const SizedBox(width: 10),
-                                            Expanded(
-                                              child: Column(
-                                                crossAxisAlignment:
-                                                    CrossAxisAlignment.start,
-                                                children: [
-                                                  Text(
-                                                    reviewsItem.authorDetails
-                                                            .name.isNotEmpty
-                                                        ? reviewsItem
-                                                            .authorDetails.name
-                                                        : "Anonymus",
-                                                    style: Theme.of(context)
-                                                        .textTheme
-                                                        .titleSmall,
-                                                  ),
-                                                  const SizedBox(height: 10),
-                                                  Text(reviewsItem.content
-                                                      .toString())
-                                                ],
-                                              ),
-                                            )
-                                          ],
-                                        ),
-                                      );
-                                    })),
-                            SizedBox(
-                              width: MediaQuery.of(context).size.width,
-                              height: MediaQuery.of(context).size.height,
-                              child: GridView.builder(
-                                  gridDelegate:
-                                      const SliverGridDelegateWithFixedCrossAxisCount(
-                                          mainAxisSpacing: 0,
-                                          crossAxisSpacing: 24,
-                                          mainAxisExtent: 170,
-                                          crossAxisCount: 2),
-                                  itemCount: state.castMovieEntity.cast!.length,
-                                  physics: const NeverScrollableScrollPhysics(),
-                                  padding: const EdgeInsets.only(left: 24),
-                                  itemBuilder: ((context, index) {
-                                    return Column(
-                                      children: [
-                                        SizedBox(
-                                          height: 100,
-                                          width: 100,
-                                          child: CachedNetworkImage(
-                                              imageBuilder:
-                                                  (context, imageProvider) =>
-                                                      CircleAvatar(
-                                                        backgroundImage:
-                                                            imageProvider,
-                                                      ),
-                                              fit: BoxFit.cover,
-                                              imageUrl: AppConstans.getPoster +
-                                                  state.castMovieEntity
-                                                      .cast![index].profilePath
-                                                      .toString(),
-                                              progressIndicatorBuilder: (context,
-                                                      url, progress) =>
-                                                  const CupertinoActivityIndicator(
-                                                    color: Colors.white,
-                                                  )),
-                                        ),
-                                        const SizedBox(height: 10),
-                                        Text(state
-                                            .castMovieEntity.cast![index].name
-                                            .toString())
-                                      ],
-                                    );
-                                  })),
-                            ),
+                            AboutMovieWidgets(itemEntity: widget.itemEntity),
+                            ReviewsWidget(reviewsEntiry: state.reviewsEntiry),
+                            CastWigets(castMovieEntity: state.castMovieEntity)
                           ]))
                     ],
                   ),
