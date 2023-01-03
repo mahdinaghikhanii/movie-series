@@ -3,13 +3,13 @@ import 'package:flutter/material.dart';
 
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:movie_series/data/entity/cast_movie.dart';
-import 'package:movie_series/data/repo/cast_movie_repository.dart';
+import 'package:movie_series/data/repo/remote/cast_movie_repository.dart';
+import 'package:movie_series/data/repo/remote/information_movie_repository.dart';
+import 'package:movie_series/data/repo/remote/reviews_movie_repository.dart';
+
 import '../../../common/exception.dart';
 import '../../../data/entity/information_movie.dart';
 import '../../../data/entity/reviews.dart';
-
-import '../../../data/repo/information_movie_repository.dart';
-import '../../../data/repo/reviews_movie_repository.dart';
 
 part 'detail_event.dart';
 part 'detail_state.dart';

@@ -29,6 +29,7 @@ class ReviewsWidget extends StatelessWidget {
         : ListView.builder(
             primary: false,
             shrinkWrap: true,
+            controller: scrollController,
             physics: const NeverScrollableScrollPhysics(),
             itemCount: reviewsEntiry.results.length,
             scrollDirection: Axis.vertical,

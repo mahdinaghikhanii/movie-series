@@ -3,7 +3,7 @@ import 'package:flutter/cupertino.dart';
 
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
-import 'package:movie_series/data/repo/cast_movie_repository.dart';
+
 import 'package:movie_series/ui/detail/widgets/about_movie_widgets.dart';
 import 'package:movie_series/ui/detail/widgets/cast_widgets.dart';
 import 'package:movie_series/ui/detail/widgets/reviews_vertical_widgets.dart';
@@ -11,8 +11,10 @@ import 'package:movie_series/ui/detail/widgets/reviews_vertical_widgets.dart';
 import '../../common/dimensions.dart';
 
 import '../../data/entity/resultItem_movie.dart';
-import '../../data/repo/information_movie_repository.dart';
-import '../../data/repo/reviews_movie_repository.dart';
+
+import '../../data/repo/remote/cast_movie_repository.dart';
+import '../../data/repo/remote/information_movie_repository.dart';
+import '../../data/repo/remote/reviews_movie_repository.dart';
 import 'bloc/detail_bloc.dart';
 import '../widgets/category_movie_information.dart';
 import '../widgets/custom_appbar.dart';
@@ -44,6 +46,12 @@ class _DetailsScreenState extends State<DetailsScreen>
   }
 
   @override
+  void dispose() {
+    super.dispose();
+    _controller.dispose();
+  }
+
+  @override
   Widget build(BuildContext context) {
     TabController tabController = TabController(length: 3, vsync: this);
     return BlocProvider(
@@ -59,13 +67,14 @@ class _DetailsScreenState extends State<DetailsScreen>
             final time = widget.itemEntity.releaseDate.split("-");
             return Scaffold(
               appBar: const CustomAppbar(
+                showAction: true,
+                actionIcon: Icons.bookmark_border,
                 iconBack: true,
                 title: "Detail",
               ),
-              body: Center(
-                child: SingleChildScrollView(
-                  primary: false,
-                  controller: _controller,
+              body: ListView(shrinkWrap: true, children: [
+                SizedBox(
+                  height: MediaQuery.of(context).size.height,
                   child: Column(
                     children: [
                       const SizedBox(height: 10),
@@ -202,29 +211,24 @@ class _DetailsScreenState extends State<DetailsScreen>
                               Tab(text: "Cast"),
                             ],
                           )),
-                      Container(
-                          margin: const EdgeInsets.only(top: 24, left: 0),
-                          width: MediaQuery.of(context).size.width,
-                          height: MediaQuery.of(context).size.height,
-                          child: TabBarView(
-                              physics: const NeverScrollableScrollPhysics(),
-                              controller: tabController,
-                              children: [
-                                AboutMovieWidgets(
-                                    itemEntity: widget.itemEntity),
-                                ReviewsWidget(
-                                  reviewsEntiry: state.reviewsEntiry,
-                                  scrollController: _controller,
-                                ),
-                                CastWigets(
-                                  castMovieEntity: state.castMovieEntity,
-                                  scrollController: _controller,
-                                ),
-                              ]))
+                      SizedBox(height: 20),
+                      Expanded(
+                        child: TabBarView(controller: tabController, children: [
+                          AboutMovieWidgets(itemEntity: widget.itemEntity),
+                          ReviewsWidget(
+                            reviewsEntiry: state.reviewsEntiry,
+                            scrollController: _controller,
+                          ),
+                          CastWigets(
+                            castMovieEntity: state.castMovieEntity,
+                            scrollController: _controller,
+                          ),
+                        ]),
+                      )
                     ],
                   ),
                 ),
-              ),
+              ]),
             );
           }
           if (state is DetailLoading) {

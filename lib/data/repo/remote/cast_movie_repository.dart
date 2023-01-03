@@ -1,6 +1,6 @@
 import 'package:movie_series/common/http_client.dart';
 import 'package:movie_series/data/entity/cast_movie.dart';
-import 'package:movie_series/data/source/cast_movie_data_source.dart';
+import 'package:movie_series/data/source/remote/cast_movie_data_source.dart';
 
 final castMovieRepository = CastMovieRepository(CastMovieDataSource(httpClint));
 

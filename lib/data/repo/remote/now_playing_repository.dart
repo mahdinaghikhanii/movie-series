@@ -1,6 +1,6 @@
-import '../../common/http_client.dart';
-import '../entity/movie_item.dart';
-import '../source/now_playing_data_source.dart';
+import 'package:movie_series/common/http_client.dart';
+import 'package:movie_series/data/entity/movie_item.dart';
+import 'package:movie_series/data/source/remote/now_playing_data_source.dart';
 
 final movieRepository = MovieRepository(MovieDataSource(httpClint));
 

@@ -1,7 +1,6 @@
 import 'package:dio/dio.dart';
-
-import '../common/htttp_validate_respone.dart';
-import '../entity/reviews.dart';
+import 'package:movie_series/data/common/htttp_validate_respone.dart';
+import 'package:movie_series/data/entity/reviews.dart';
 
 abstract class IReviewsMovieDataSource {
   Future<ReviewsEntiry> getReviews({required String idMovie});

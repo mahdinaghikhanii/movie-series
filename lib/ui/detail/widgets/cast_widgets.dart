@@ -48,7 +48,7 @@ class CastWigets extends StatelessWidget {
                           )),
                 ),
                 const SizedBox(height: 10),
-                Text(castMovieEntity.cast![index].name.toString())
+                Text(castMovieEntity.cast![index].name.toString()),
               ],
             );
           })),
