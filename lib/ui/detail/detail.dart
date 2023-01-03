@@ -211,7 +211,7 @@ class _DetailsScreenState extends State<DetailsScreen>
                               Tab(text: "Cast"),
                             ],
                           )),
-                      SizedBox(height: 20),
+                      const SizedBox(height: 20),
                       Expanded(
                         child: TabBarView(controller: tabController, children: [
                           AboutMovieWidgets(itemEntity: widget.itemEntity),
