@@ -1,18 +1,36 @@
 // ignore_for_file: file_names
 
+import 'package:hive_flutter/hive_flutter.dart';
+
+part 'resultItem_movie.g.dart';
+
+@HiveType(typeId: 0)
 class ResultItemMovieEntity {
+  @HiveField(0)
   final bool adult;
+  @HiveField(1)
   final String backdropPath;
+  @HiveField(2)
   final int id;
+  @HiveField(3)
   final String originalLanguage;
+  @HiveField(4)
   final String originalTitle;
+  @HiveField(5)
   final String overview;
+  @HiveField(6)
   final String popularity;
+  @HiveField(7)
   final String posterPath;
+  @HiveField(8)
   final String releaseDate;
+  @HiveField(9)
   final String title;
+  @HiveField(10)
   final bool video;
+  @HiveField(11)
   final String voteAverage;
+  @HiveField(12)
   final int voteCount;
 
   ResultItemMovieEntity(
