@@ -8,10 +8,13 @@ import 'package:movie_series/data/entity/resultItem_movie.dart';
 import 'theme.dart';
 import 'ui/root.dart';
 
+const taskBoxName = "TASK";
+
 void main() async {
   await Hive.initFlutter();
-  Hive.registerAdapter(ResultItemMovieEntityAdapter());
+  // Hive.registerAdapter(ResultItemMovieEntityAdapter());
   WidgetsBinding widgetsBinding = WidgetsFlutterBinding.ensureInitialized();
+  await Hive.openBox<ResultItemMovieEntity>(taskBoxName);
   FlutterNativeSplash.preserve(widgetsBinding: widgetsBinding);
   runApp(const MyApp());
 }

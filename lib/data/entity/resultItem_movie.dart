@@ -1,17 +1,16 @@
 // ignore_for_file: file_names
-
 import 'package:hive_flutter/hive_flutter.dart';
 
 part 'resultItem_movie.g.dart';
 
 @HiveType(typeId: 0)
-class ResultItemMovieEntity {
+class ResultItemMovieEntity extends HiveObject {
   @HiveField(0)
   final bool adult;
   @HiveField(1)
   final String backdropPath;
   @HiveField(2)
-  final int id;
+  int id;
   @HiveField(3)
   final String originalLanguage;
   @HiveField(4)
