@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
-import 'package:movie_series/common/dimensions.dart';
-import 'package:movie_series/data/entity/resultItem_movie.dart';
+import '../../../common/dimensions.dart';
+import '../../../data/entity/resultItem_movie.dart';
 
 class AboutMovieWidgets extends StatelessWidget {
   final ResultItemMovieEntity itemEntity;

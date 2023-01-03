@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
-import 'package:movie_series/common/app_constans.dart';
-import 'package:movie_series/ui/widgets/image.dart';
+import '../../../common/app_constans.dart';
+import '../../widgets/image.dart';
 
 import '../../../common/dimensions.dart';
 import '../../../data/entity/reviews.dart';

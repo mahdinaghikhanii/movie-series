@@ -4,9 +4,9 @@ import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 
-import 'package:movie_series/ui/detail/widgets/about_movie_widgets.dart';
-import 'package:movie_series/ui/detail/widgets/cast_widgets.dart';
-import 'package:movie_series/ui/detail/widgets/reviews_vertical_widgets.dart';
+import 'widgets/about_movie_widgets.dart';
+import 'widgets/cast_widgets.dart';
+import 'widgets/reviews_vertical_widgets.dart';
 
 import '../../common/dimensions.dart';
 

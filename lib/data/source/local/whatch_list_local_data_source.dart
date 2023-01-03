@@ -1,5 +1,5 @@
 import 'package:hive_flutter/adapters.dart';
-import 'package:movie_series/data/entity/resultItem_movie.dart';
+import '../../entity/resultItem_movie.dart';
 
 abstract class IWatchListLocalDataSource {
   Future<List<ResultItemMovieEntity>> getAll();

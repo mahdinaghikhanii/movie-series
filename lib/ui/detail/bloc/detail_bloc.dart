@@ -2,10 +2,10 @@ import 'package:equatable/equatable.dart';
 import 'package:flutter/material.dart';
 
 import 'package:flutter_bloc/flutter_bloc.dart';
-import 'package:movie_series/data/entity/cast_movie.dart';
-import 'package:movie_series/data/repo/remote/cast_movie_repository.dart';
-import 'package:movie_series/data/repo/remote/information_movie_repository.dart';
-import 'package:movie_series/data/repo/remote/reviews_movie_repository.dart';
+import '../../../data/entity/cast_movie.dart';
+import '../../../data/repo/remote/cast_movie_repository.dart';
+import '../../../data/repo/remote/information_movie_repository.dart';
+import '../../../data/repo/remote/reviews_movie_repository.dart';
 
 import '../../../common/exception.dart';
 import '../../../data/entity/information_movie.dart';

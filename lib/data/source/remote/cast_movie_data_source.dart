@@ -1,6 +1,6 @@
 import 'package:dio/dio.dart';
-import 'package:movie_series/data/common/htttp_validate_respone.dart';
-import 'package:movie_series/data/entity/cast_movie.dart';
+import '../../common/htttp_validate_respone.dart';
+import '../../entity/cast_movie.dart';
 
 abstract class ICastMovieDataSource {
   Future<CastMovieEntity> getCastMvoie({required String idMovie});

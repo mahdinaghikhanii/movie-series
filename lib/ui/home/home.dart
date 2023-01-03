@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
-import 'package:movie_series/common/responsive.dart';
-import 'package:movie_series/ui/home/web_home_screen.dart';
+import '../../common/responsive.dart';
+import 'web_home_screen.dart';
 import '../../data/repo/remote/now_playing_repository.dart';
 import '../detail/detail.dart';
 import '../widgets/empty_state.dart';

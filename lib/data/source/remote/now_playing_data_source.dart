@@ -1,7 +1,7 @@
 import 'package:dio/dio.dart';
-import 'package:movie_series/common/app_constans.dart';
-import 'package:movie_series/data/common/htttp_validate_respone.dart';
-import 'package:movie_series/data/entity/movie_item.dart';
+import '../../../common/app_constans.dart';
+import '../../common/htttp_validate_respone.dart';
+import '../../entity/movie_item.dart';
 
 abstract class IMovieDataSource {
   Future<MovieItemEntity> getNowPlaying();

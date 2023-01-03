@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+
 import '../../common/exception.dart';
 
 class EmptyState extends StatelessWidget {

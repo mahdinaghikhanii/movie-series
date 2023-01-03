@@ -1,5 +1,5 @@
-import 'package:movie_series/data/entity/resultItem_movie.dart';
-import 'package:movie_series/data/source/local/whatch_list_local_data_source.dart';
+import '../../entity/resultItem_movie.dart';
+import '../../source/local/whatch_list_local_data_source.dart';
 
 abstract class IWatchListLocalRepository {
   Future<List<ResultItemMovieEntity>> getAll();

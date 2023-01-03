@@ -1,7 +1,6 @@
 import 'package:flutter/material.dart';
 // ignore: depend_on_referenced_packages
 import 'package:flutter_native_splash/flutter_native_splash.dart';
-
 import 'package:hive_flutter/adapters.dart';
 import 'package:movie_series/data/entity/resultItem_movie.dart';
 

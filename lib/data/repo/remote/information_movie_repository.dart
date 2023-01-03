@@ -1,6 +1,6 @@
-import 'package:movie_series/common/http_client.dart';
-import 'package:movie_series/data/entity/information_movie.dart';
-import 'package:movie_series/data/source/remote/information_movie_data_source.dart';
+import '../../../common/http_client.dart';
+import '../../entity/information_movie.dart';
+import '../../source/remote/information_movie_data_source.dart';
 
 final informationRepository =
     InformationMovieRepository(InformationMovieDataSourec(httpClint));

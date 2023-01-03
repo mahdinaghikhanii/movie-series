@@ -1,9 +1,9 @@
 import 'package:flutter/material.dart';
-import '../detail/detail.dart';
 
 import '../../common/app_constans.dart';
 import '../../common/dimensions.dart';
 import '../../data/entity/movie_item.dart';
+import '../detail/detail.dart';
 import 'image.dart';
 
 class ShowItemsHorizantal extends StatelessWidget {

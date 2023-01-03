@@ -1,7 +1,7 @@
 import 'package:equatable/equatable.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
-import 'package:movie_series/data/repo/remote/now_playing_repository.dart';
+import '../../../data/repo/remote/now_playing_repository.dart';
 import '../../../data/entity/movie_item.dart';
 
 import '../../../common/exception.dart';

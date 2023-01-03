@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
-import '../widgets/custom_appbar.dart';
+
 import '../../theme.dart';
+import '../widgets/custom_appbar.dart';
 
 class WhatchListScreen extends StatelessWidget {
   const WhatchListScreen({super.key});
