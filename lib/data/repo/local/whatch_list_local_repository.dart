@@ -1,36 +1,33 @@
 import 'package:movie_series/data/entity/resultItem_movie.dart';
+import 'package:movie_series/data/source/local/whatch_list_local_data_source.dart';
 
 abstract class IWatchListLocalRepository {
   Future<List<ResultItemMovieEntity>> getAll();
-  Future<ResultItemMovieEntity> findById();
   Future<void> deleteById(int id);
   Future<void> deleteAll();
   Future<ResultItemMovieEntity> createOrUpdate(ResultItemMovieEntity data);
 }
 
 class WatchListLocalRepository implements IWatchListLocalRepository {
+  IWatchListLocalDataSource dataSource;
+  WatchListLocalRepository(this.dataSource);
   @override
   Future<ResultItemMovieEntity> createOrUpdate(ResultItemMovieEntity data) {
-    throw UnimplementedError();
+    return dataSource.createOrUpdate(data);
   }
 
   @override
   Future<void> deleteAll() {
-    throw UnimplementedError();
+    return dataSource.deleteAll();
   }
 
   @override
   Future<void> deleteById(int id) {
-    throw UnimplementedError();
-  }
-
-  @override
-  Future<ResultItemMovieEntity> findById() {
-    throw UnimplementedError();
+    return dataSource.deleteById(id);
   }
 
   @override
   Future<List<ResultItemMovieEntity>> getAll() {
-    throw UnimplementedError();
+    return dataSource.getAll();
   }
 }

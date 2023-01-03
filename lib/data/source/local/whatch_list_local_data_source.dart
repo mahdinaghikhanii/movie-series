@@ -3,7 +3,7 @@ import 'package:movie_series/data/entity/resultItem_movie.dart';
 
 abstract class IWatchListLocalDataSource {
   Future<List<ResultItemMovieEntity>> getAll();
-  Future<ResultItemMovieEntity> findById();
+
   Future<void> deleteById(int id);
   Future<void> deleteAll();
   Future<void> delete(ResultItemMovieEntity data);
@@ -33,11 +33,6 @@ class WatchListLocalDataSource implements IWatchListLocalDataSource {
   @override
   Future<void> deleteById(int id) {
     return box.delete(id);
-  }
-
-  @override
-  Future<ResultItemMovieEntity> findById() {
-    throw UnimplementedError();
   }
 
   @override
