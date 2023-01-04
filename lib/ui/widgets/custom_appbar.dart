@@ -4,9 +4,11 @@ class CustomAppbar extends StatelessWidget with PreferredSizeWidget {
   final bool iconBack;
   final bool showAction;
   final IconData? actionIcon;
+  final Function()? ontapAction;
   final String title;
   const CustomAppbar(
       {super.key,
+      this.ontapAction,
       required this.iconBack,
       required this.title,
       this.showAction = false,
@@ -21,7 +23,7 @@ class CustomAppbar extends StatelessWidget with PreferredSizeWidget {
       actions: showAction
           ? [
               IconButton(
-                onPressed: () {},
+                onPressed: ontapAction,
                 icon: Icon(actionIcon),
                 iconSize: 24,
               )

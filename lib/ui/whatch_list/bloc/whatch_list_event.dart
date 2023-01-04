@@ -6,3 +6,13 @@ abstract class WhatchListEvent extends Equatable {
   @override
   List<Object> get props => [];
 }
+
+class StartWhatchListEvent extends WhatchListEvent {}
+
+class AddToWhatchListEvent extends WhatchListEvent {
+  final ResultItemMovieEntity resultItemMovieEntity;
+  const AddToWhatchListEvent(this.resultItemMovieEntity);
+
+  @override
+  List<Object> get props => [resultItemMovieEntity];
+}

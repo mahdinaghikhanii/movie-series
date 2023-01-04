@@ -11,7 +11,7 @@ const taskBoxName = "TASK";
 
 void main() async {
   await Hive.initFlutter();
-  // Hive.registerAdapter(ResultItemMovieEntityAdapter());
+  Hive.registerAdapter(ResultItemMovieEntityAdapter());
   WidgetsBinding widgetsBinding = WidgetsFlutterBinding.ensureInitialized();
   await Hive.openBox<ResultItemMovieEntity>(taskBoxName);
   FlutterNativeSplash.preserve(widgetsBinding: widgetsBinding);
