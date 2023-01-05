@@ -101,6 +101,7 @@ class SearchScreen extends StatelessWidget {
                       ],
                     ),
                     child: TextField(
+                      style: Theme.of(context).textTheme.bodyText1,
                       controller: controller,
                       onChanged: (value) {},
                       decoration: InputDecoration(
@@ -120,10 +121,14 @@ class SearchScreen extends StatelessWidget {
                 const SizedBox(height: 18),
                 Expanded(
                   child: ListView.builder(
+                      shrinkWrap: true,
                       padding: const EdgeInsets.symmetric(
                           horizontal: Dimensions.padingdefultSize, vertical: 2),
                       itemCount: state.searchEntiry.results.length,
                       itemBuilder: ((context, index) {
+                        final time = state
+                            .searchEntiry.results[index].releaseDate
+                            .split("-");
                         return Container(
                           margin: const EdgeInsets.only(bottom: 24),
                           child: InkWell(
@@ -143,6 +148,7 @@ class SearchScreen extends StatelessWidget {
                                           return Container(
                                             decoration: const BoxDecoration(
                                                 image: DecorationImage(
+                                                    fit: BoxFit.cover,
                                                     image: AssetImage(
                                                         "assets/img/notfind.png"))),
                                           );
@@ -162,27 +168,69 @@ class SearchScreen extends StatelessWidget {
                                   ),
                                 ),
                                 const SizedBox(width: 12),
-                                Column(
-                                  mainAxisAlignment: MainAxisAlignment.start,
-                                  crossAxisAlignment: CrossAxisAlignment.start,
-                                  children: [
-                                    Text(state
-                                        .searchEntiry.results[index].title),
-                                    const SizedBox(height: 14),
-                                    Row(
-                                      crossAxisAlignment:
-                                          CrossAxisAlignment.start,
-                                      mainAxisAlignment:
-                                          MainAxisAlignment.start,
-                                      children: [
-                                        const Icon(Icons.star_outline,
-                                            color: Color(0xFFFF8700)),
-                                        const SizedBox(width: 5),
-                                        Text(state.searchEntiry.results[index]
-                                            .voteAverage),
-                                      ],
-                                    )
-                                  ],
+                                Expanded(
+                                  child: Column(
+                                    mainAxisAlignment: MainAxisAlignment.start,
+                                    crossAxisAlignment:
+                                        CrossAxisAlignment.start,
+                                    children: [
+                                      Text(
+                                        state.searchEntiry.results[index].title,
+                                        maxLines: 2,
+                                      ),
+                                      const SizedBox(height: 14),
+                                      Row(
+                                        crossAxisAlignment:
+                                            CrossAxisAlignment.start,
+                                        mainAxisAlignment:
+                                            MainAxisAlignment.start,
+                                        children: [
+                                          const Icon(Icons.star_outline,
+                                              color: Color(0xFFFF8700)),
+                                          const SizedBox(width: 5),
+                                          Text(
+                                            state.searchEntiry.results[index]
+                                                .voteAverage,
+                                            style: const TextStyle(
+                                                color: Color(0xFFFF8700)),
+                                          ),
+                                        ],
+                                      ),
+                                      const SizedBox(height: 5),
+                                      Row(
+                                        children: [
+                                          const Icon(
+                                            Icons.movie,
+                                            color: Colors.white,
+                                          ),
+                                          const SizedBox(width: 5),
+                                          Text(time[0].toString(),
+                                              style: const TextStyle(
+                                                color: Colors.white,
+                                              )),
+                                        ],
+                                      ),
+                                      const SizedBox(height: 5),
+                                      Row(
+                                        children: [
+                                          const Icon(
+                                            Icons.language,
+                                            color: Colors.white,
+                                          ),
+                                          const SizedBox(width: 5),
+                                          Text(
+                                              state.searchEntiry.results[index]
+                                                  .originalLanguage
+                                                  .toString(),
+                                              maxLines: 1,
+                                              overflow: TextOverflow.ellipsis,
+                                              style: const TextStyle(
+                                                color: Colors.white,
+                                              )),
+                                        ],
+                                      ),
+                                    ],
+                                  ),
                                 )
                               ],
                             ),
