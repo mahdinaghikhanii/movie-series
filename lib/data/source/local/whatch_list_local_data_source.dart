@@ -1,4 +1,5 @@
 import 'package:hive_flutter/adapters.dart';
+
 import '../../entity/resultItem_movie.dart';
 
 abstract class IWatchListLocalDataSource {

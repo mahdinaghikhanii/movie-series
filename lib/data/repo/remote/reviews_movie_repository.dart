@@ -1,7 +1,6 @@
 import '../../../common/http_client.dart';
-import '../../source/remote/reviews_movie_data_source.dart';
-
 import '../../entity/reviews.dart';
+import '../../source/remote/reviews_movie_data_source.dart';
 
 final reviewsRepository =
     ReviewsMovieRepository(ReviewsMovieDataSource(httpClint));

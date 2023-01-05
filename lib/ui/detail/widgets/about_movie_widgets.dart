@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+
 import '../../../common/dimensions.dart';
 import '../../../data/entity/resultItem_movie.dart';
 

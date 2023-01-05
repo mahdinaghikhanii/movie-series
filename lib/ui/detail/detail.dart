@@ -3,7 +3,7 @@ import 'package:flutter/cupertino.dart';
 
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
-import 'package:movie_series/ui/whatch_list/bloc/whatch_list_bloc.dart';
+import '../whatch_list/bloc/whatch_list_bloc.dart';
 
 import 'widgets/about_movie_widgets.dart';
 import 'widgets/cast_widgets.dart';

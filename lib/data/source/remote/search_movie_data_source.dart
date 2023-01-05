@@ -1,7 +1,7 @@
 import 'package:dio/dio.dart';
-import 'package:movie_series/data/common/htttp_validate_respone.dart';
 
-import 'package:movie_series/data/entity/search.dart';
+import '../../common/htttp_validate_respone.dart';
+import '../../entity/search.dart';
 
 abstract class ISearchMovieDataSource {
   Future<SearchResultsEntity> getSearch({required String query});

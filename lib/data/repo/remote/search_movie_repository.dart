@@ -1,5 +1,9 @@
-import 'package:movie_series/data/entity/search.dart';
-import 'package:movie_series/data/source/remote/search_movie_data_source.dart';
+import '../../../common/http_client.dart';
+import '../../entity/search.dart';
+import '../../source/remote/search_movie_data_source.dart';
+
+final searchMovieRepository =
+    SearchMovieRemoteRepository(SearchMovieDataSource(httpClint));
 
 abstract class ISearchMovieRemoteRepository {
   Future<SearchResultsEntity> getSearch({required String query});
