@@ -83,37 +83,41 @@ class SearchScreen extends StatelessWidget {
           } else if (state is SearchSuccess) {
             return Column(
               children: [
-                Container(
-                  height: 44,
-                  width: double.infinity,
-                  padding: const EdgeInsets.only(left: 10, bottom: 4),
-                  decoration: BoxDecoration(
-                    borderRadius: BorderRadius.circular(10),
-                    color: LightThemeColor.primaryColor,
-                    boxShadow: [
-                      BoxShadow(
-                        color: Colors.black.withOpacity(0.1),
-                        blurRadius: 30,
-                      )
-                    ],
-                  ),
-                  child: TextField(
-                    controller: controller,
-                    onChanged: (value) {},
-                    decoration: InputDecoration(
-                      suffixIcon: IconButton(
-                        onPressed: () {
-                          BlocProvider.of<SearchBloc>(context)
-                              .add(RequestForSearchMovie(controller.text));
-                        },
-                        icon: const Icon(
-                          CupertinoIcons.search,
+                Padding(
+                  padding: const EdgeInsets.symmetric(
+                      horizontal: Dimensions.padingdefultSize),
+                  child: Container(
+                    height: 44,
+                    width: double.infinity,
+                    padding: const EdgeInsets.only(left: 10, bottom: 4),
+                    decoration: BoxDecoration(
+                      borderRadius: BorderRadius.circular(10),
+                      color: LightThemeColor.primaryColor,
+                      boxShadow: [
+                        BoxShadow(
+                          color: Colors.black.withOpacity(0.1),
+                          blurRadius: 30,
+                        )
+                      ],
+                    ),
+                    child: TextField(
+                      controller: controller,
+                      onChanged: (value) {},
+                      decoration: InputDecoration(
+                        suffixIcon: IconButton(
+                          onPressed: () {
+                            BlocProvider.of<SearchBloc>(context)
+                                .add(RequestForSearchMovie(controller.text));
+                          },
+                          icon: const Icon(
+                            CupertinoIcons.search,
+                          ),
                         ),
                       ),
                     ),
                   ),
                 ),
-                const SizedBox(height: 20),
+                const SizedBox(height: 18),
                 Expanded(
                   child: ListView.builder(
                       padding: const EdgeInsets.symmetric(
@@ -121,7 +125,7 @@ class SearchScreen extends StatelessWidget {
                       itemCount: state.searchEntiry.results.length,
                       itemBuilder: ((context, index) {
                         return Container(
-                          margin: EdgeInsets.only(bottom: 10),
+                          margin: const EdgeInsets.only(bottom: 24),
                           child: InkWell(
                             borderRadius: BorderRadius.circular(10),
                             onTap: () {},
@@ -135,6 +139,14 @@ class SearchScreen extends StatelessWidget {
                                   child: ClipRRect(
                                     borderRadius: BorderRadius.circular(19),
                                     child: CachedNetworkImage(
+                                        errorWidget: (context, url, error) {
+                                          return Container(
+                                            decoration: const BoxDecoration(
+                                                image: DecorationImage(
+                                                    image: AssetImage(
+                                                        "assets/img/notfind.png"))),
+                                          );
+                                        },
                                         fit: BoxFit.cover,
                                         imageUrl:
                                             "${AppConstans.getPoster}${state.searchEntiry.results[index].backdropPath}",
