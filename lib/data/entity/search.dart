@@ -26,8 +26,8 @@ class SearchResultsEntity {
   final String releaseDate;
   final String title;
   final bool video;
-  final double voteAverage;
-  final int voteCount;
+  final String voteAverage;
+  final String voteCount;
 
   SearchResultsEntity.fromJson(Map<String, dynamic> json)
       : adult = json['adult'],
@@ -42,8 +42,8 @@ class SearchResultsEntity {
         releaseDate = json['release_date'],
         title = json['title'],
         video = json['video'],
-        voteAverage = json['vote_average'],
-        voteCount = json['vote_count'];
+        voteAverage = json['vote_average'].toString(),
+        voteCount = json['vote_count'].toString();
 
   static List<SearchResultsEntity> parssJsonArray(List<dynamic> jsonArray) {
     final List<SearchResultsEntity> item = [];

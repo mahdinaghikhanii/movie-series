@@ -6,7 +6,7 @@ final searchMovieRepository =
     SearchMovieRemoteRepository(SearchMovieDataSource(httpClint));
 
 abstract class ISearchMovieRemoteRepository {
-  Future<SearchResultsEntity> getSearch({required String query});
+  Future<SearchEntiry> getSearch({required String query});
 }
 
 class SearchMovieRemoteRepository implements ISearchMovieRemoteRepository {
@@ -14,7 +14,7 @@ class SearchMovieRemoteRepository implements ISearchMovieRemoteRepository {
   SearchMovieRemoteRepository(this.searchMovieDataSource);
 
   @override
-  Future<SearchResultsEntity> getSearch({required String query}) {
+  Future<SearchEntiry> getSearch({required String query}) {
     return searchMovieDataSource.getSearch(query: query);
   }
 }

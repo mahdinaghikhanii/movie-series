@@ -1,11 +1,12 @@
+// ignore_for_file: depend_on_referenced_packages
+
 import 'package:flutter/material.dart';
 
 import 'package:flutter_native_splash/flutter_native_splash.dart';
 import 'package:hive_flutter/adapters.dart';
-import 'common/http_client.dart';
+
 import 'data/entity/resultItem_movie.dart';
 
-import 'data/source/remote/search_movie_data_source.dart';
 import 'theme.dart';
 import 'ui/root.dart';
 
@@ -25,8 +26,6 @@ class MyApp extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    final test = SearchMovieDataSource(httpClint).getSearch(query: "Home");
-
     return MaterialApp(
         title: 'Movie series',
         debugShowCheckedModeBanner: false,
