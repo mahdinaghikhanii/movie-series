@@ -79,15 +79,42 @@ class _DetailsScreenState extends State<DetailsScreen>
                 return bloc;
               },
               child: Scaffold(
-                appBar: CustomAppbar(
-                  showAction: true,
-                  ontapAction: () {
-                    BlocProvider.of<WhatchListBloc>(context)
-                        .add(AddToWhatchListEvent(widget.itemEntity));
-                  },
-                  actionIcon: Icons.bookmark_border,
-                  iconBack: true,
-                  title: "Detail",
+                appBar: AppBar(
+                  elevation: 0,
+                  centerTitle: true,
+                  automaticallyImplyLeading: false,
+                  actions: [
+                    BlocProvider(
+                      create: (BuildContext context) {
+                        final bloc = WhatchListBloc(whatchListLocalRepository);
+                        return bloc;
+                      },
+                      child: BlocBuilder<WhatchListBloc, WhatchListState>(
+                        builder: (BuildContext context, state) {
+                          return IconButton(
+                            onPressed: () {
+                              BlocProvider.of<WhatchListBloc>(context)
+                                  .add(AddToWhatchListEvent(widget.itemEntity));
+                            },
+                            icon: const Icon(Icons.bookmark_border),
+                            iconSize: 24,
+                          );
+                        },
+                      ),
+                    )
+                  ],
+                  leading: IconButton(
+                    onPressed: () {
+                      Navigator.pop(context);
+                    },
+                    icon: const Icon(Icons.arrow_back_ios),
+                    iconSize: 20,
+                  ),
+                  title: Text("Detail",
+                      style: Theme.of(context)
+                          .textTheme
+                          .titleMedium!
+                          .copyWith(fontSize: 18)),
                 ),
                 body: ListView(
                     controller: _controller,
