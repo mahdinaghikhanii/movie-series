@@ -18,7 +18,7 @@ import '../../data/repo/remote/information_movie_repository.dart';
 import '../../data/repo/remote/reviews_movie_repository.dart';
 import 'bloc/detail_bloc.dart';
 import '../widgets/category_movie_information.dart';
-import '../widgets/custom_appbar.dart';
+
 import '../widgets/empty_state.dart';
 import '../widgets/image.dart';
 import '../widgets/loading.dart';
@@ -71,10 +71,7 @@ class _DetailsScreenState extends State<DetailsScreen>
                 final bloc = WhatchListBloc(whatchListLocalRepository);
                 bloc.stream.listen((state) {
                   if (state is SuccessAddToWhatchList) {
-                    print("Done");
-                  } else if (state is FailedToAddWhatchList) {
-                    print("fail");
-                  }
+                  } else if (state is FailedToAddWhatchList) {}
                 });
                 return bloc;
               },
