@@ -1,4 +1,5 @@
 import 'package:equatable/equatable.dart';
+import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:hive_flutter/hive_flutter.dart';
 import '../../../common/exception.dart';
@@ -18,6 +19,7 @@ class WhatchListBloc extends Bloc<WhatchListEvent, WhatchListState> {
   WhatchListBloc(this.repository) : super(WhatchListLoading()) {
     on<WhatchListEvent>((event, emit) async {
       if (event is StartWhatchListEvent) {
+        debugPrint("User Clicked");
         try {
           emit(WhatchListLoading());
           await Future.delayed(const Duration(seconds: 1));
@@ -36,6 +38,14 @@ class WhatchListBloc extends Bloc<WhatchListEvent, WhatchListState> {
           emit(SuccessAddToWhatchList());
         } catch (e) {
           emit(FailedToAddWhatchList(AppeExeption()));
+        }
+      } else if (event is DeleteWhatchListItem) {
+        try {
+          await repository.deleteById(event.id);
+          emit(SuccessDeleteWhatchListItem());
+          emit(WhatchListLoading());
+        } catch (e) {
+          emit(FailedDeleteWhatchListItem(AppeExeption()));
         }
       }
     });

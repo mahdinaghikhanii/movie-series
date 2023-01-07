@@ -37,3 +37,13 @@ class FailedToAddWhatchList extends WhatchListState {
   @override
   List<Object> get props => [exeption];
 }
+
+class SuccessDeleteWhatchListItem extends WhatchListState {}
+
+class FailedDeleteWhatchListItem extends WhatchListState {
+  final AppeExeption exeption;
+  const FailedDeleteWhatchListItem(this.exeption);
+
+  @override
+  List<Object> get props => [exeption];
+}

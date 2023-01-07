@@ -16,3 +16,11 @@ class AddToWhatchListEvent extends WhatchListEvent {
   @override
   List<Object> get props => [resultItemMovieEntity];
 }
+
+class DeleteWhatchListItem extends WhatchListEvent {
+  final int id;
+  const DeleteWhatchListItem(this.id);
+
+  @override
+  List<Object> get props => [id];
+}
