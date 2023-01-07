@@ -43,6 +43,7 @@ dependencies:
   loading_animation_widget: ^1.2.0+4
   hive_flutter: ^1.1.0
   hive_generator: ^1.1.3
+  provider: ^6.0.5
 
 
 dev_dependencies:
